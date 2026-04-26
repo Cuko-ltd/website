@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 const navItems = [
   { href: '/', label: 'Home', code: '00' },
   { href: '/services', label: 'Services', code: '01' },
@@ -15,7 +17,8 @@ const buildId = new Date().toISOString().slice(0, 10);
   <div class="bar top-bar mono">
     <span class="bar-cell">CUKO·LTD / FRACTIONAL CTO</span>
     <span class="bar-cell hide-on-mobile">LON · GMT+0</span>
-    <span class="bar-cell">REV {buildId}</span>
+    <span class="bar-cell hide-on-mobile">REV {buildId}</span>
+    <ThemeToggle />
   </div>
 
   <div class="brand-row">
@@ -77,7 +80,7 @@ const buildId = new Date().toISOString().slice(0, 10);
 
   .bar {
     display: flex;
-    justify-content: space-between;
+    align-items: stretch;
     border: 2px solid var(--rule);
     background: var(--paper-alt);
     font-size: 0.7rem;
@@ -92,11 +95,8 @@ const buildId = new Date().toISOString().slice(0, 10);
     border-right: 2px solid var(--rule);
     flex: 1;
     white-space: nowrap;
-  }
-
-  .bar-cell:last-child {
-    border-right: none;
-    text-align: right;
+    display: flex;
+    align-items: center;
   }
 
   .bar-cell:first-child {

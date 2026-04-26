@@ -52,6 +52,18 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 
+<script is:inline>
+  // Pre-paint theme application — runs before body renders to avoid FOUC.
+  (function () {
+    try {
+      var t = localStorage.getItem('cuko-theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) {}
+  })();
+</script>
+
 <ClientRouter />
 
 {allSchemas.map((schema) => <JsonLd data={schema} />)}
@@ -65,13 +77,13 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
     --paper-alt:  #e9e8e2;
     --rule:       #0a0a0a;
     --rule-soft:  #cfcdc5;
-    --accent:     #ff5b1f;
-    --accent-ink: #0a0a0a;
+    --accent:     #1f4dff;
+    --accent-ink: #f4f3ee;
     --grid-line:  rgba(10, 10, 10, 0.06);
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --ink:        #f4f3ee;
       --ink-muted:  #b8b6ad;
       --ink-soft:   #7d7b73;
@@ -79,10 +91,23 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
       --paper-alt:  #161614;
       --rule:       #f4f3ee;
       --rule-soft:  #2a2a28;
-      --accent:     #ff7a3d;
+      --accent:     #6184ff;
       --accent-ink: #0a0a0a;
       --grid-line:  rgba(244, 243, 238, 0.06);
     }
+  }
+
+  :root[data-theme="dark"] {
+    --ink:        #f4f3ee;
+    --ink-muted:  #b8b6ad;
+    --ink-soft:   #7d7b73;
+    --paper:      #0a0a0a;
+    --paper-alt:  #161614;
+    --rule:       #f4f3ee;
+    --rule-soft:  #2a2a28;
+    --accent:     #6184ff;
+    --accent-ink: #0a0a0a;
+    --grid-line:  rgba(244, 243, 238, 0.06);
   }
 
   * { box-sizing: border-box; }

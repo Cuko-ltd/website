@@ -1,0 +1,105 @@
+---
+// Three-state theme toggle: auto (follow OS), light, dark.
+// Initial state applied pre-paint via inline script in BaseLayout to avoid FOUC.
+---
+
+<div class="theme-toggle mono" role="group" aria-label="Theme">
+  <button type="button" class="theme-btn" data-theme="auto"  aria-pressed="false" title="Match system theme">AUTO</button>
+  <button type="button" class="theme-btn" data-theme="light" aria-pressed="false" title="Use light theme">LIGHT</button>
+  <button type="button" class="theme-btn" data-theme="dark"  aria-pressed="false" title="Use dark theme">DARK</button>
+</div>
+
+<script>
+  const STORAGE_KEY = 'cuko-theme';
+  type Mode = 'auto' | 'light' | 'dark';
+
+  function applyMode(mode: Mode) {
+    if (mode === 'auto') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', mode);
+    }
+    document
+      .querySelectorAll<HTMLButtonElement>('.theme-toggle .theme-btn')
+      .forEach((btn) => {
+        const isOn = btn.dataset.theme === mode;
+        btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+        btn.classList.toggle('is-on', isOn);
+      });
+  }
+
+  function readMode(): Mode {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'light' || stored === 'dark') return stored;
+    return 'auto';
+  }
+
+  function init() {
+    const current = readMode();
+    applyMode(current);
+
+    document
+      .querySelectorAll<HTMLButtonElement>('.theme-toggle .theme-btn')
+      .forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const mode = (btn.dataset.theme ?? 'auto') as Mode;
+          if (mode === 'auto') {
+            localStorage.removeItem(STORAGE_KEY);
+          } else {
+            localStorage.setItem(STORAGE_KEY, mode);
+          }
+          applyMode(mode);
+        });
+      });
+  }
+
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    border-left: 2px solid var(--rule);
+    height: 100%;
+  }
+
+  .theme-btn {
+    appearance: none;
+    background: var(--paper-alt);
+    border: none;
+    border-right: 2px solid var(--rule);
+    color: var(--ink-soft);
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .theme-btn:last-child {
+    border-right: none;
+  }
+
+  .theme-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .theme-btn.is-on {
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+
+  .theme-btn.is-on:hover {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .theme-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
+  }
+</style>
