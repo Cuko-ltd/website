@@ -74,8 +74,18 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 0.4rem 0.6rem;
+    min-height: 32px;
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  /* Touch targets ≥44×44 on coarse pointers (touch screens) */
+  @media (pointer: coarse) {
+    .theme-btn {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.7rem 0.8rem;
+    }
   }
 
   .theme-btn:last-child {

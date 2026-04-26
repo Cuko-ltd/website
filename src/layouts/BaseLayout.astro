@@ -84,12 +84,12 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
 <style is:global>
   :root {
     --ink:        #0a0a0a;
-    --ink-muted:  #3a3a3a;
-    --ink-soft:   #6b6b6b;
+    --ink-muted:  #2e2e2e;
+    --ink-soft:   #565656;
     --paper:      #f4f3ee;
     --paper-alt:  #e9e8e2;
     --rule:       #0a0a0a;
-    --rule-soft:  #cfcdc5;
+    --rule-soft:  #b8b6ad;
     --accent:     #1f4dff;
     --accent-ink: #f4f3ee;
     --grid-line:  rgba(10, 10, 10, 0.06);
@@ -98,13 +98,13 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --ink:        #f4f3ee;
-      --ink-muted:  #b8b6ad;
-      --ink-soft:   #7d7b73;
+      --ink-muted:  #c8c5b9;
+      --ink-soft:   #969386;
       --paper:      #0a0a0a;
       --paper-alt:  #161614;
       --rule:       #f4f3ee;
-      --rule-soft:  #2a2a28;
-      --accent:     #6184ff;
+      --rule-soft:  #4a4842;
+      --accent:     #7595ff;
       --accent-ink: #0a0a0a;
       --grid-line:  rgba(244, 243, 238, 0.06);
     }
@@ -112,13 +112,13 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
 
   :root[data-theme="dark"] {
     --ink:        #f4f3ee;
-    --ink-muted:  #b8b6ad;
-    --ink-soft:   #7d7b73;
+    --ink-muted:  #c8c5b9;
+    --ink-soft:   #969386;
     --paper:      #0a0a0a;
     --paper-alt:  #161614;
     --rule:       #f4f3ee;
-    --rule-soft:  #2a2a28;
-    --accent:     #6184ff;
+    --rule-soft:  #4a4842;
+    --accent:     #7595ff;
     --accent-ink: #0a0a0a;
     --grid-line:  rgba(244, 243, 238, 0.06);
   }
@@ -596,12 +596,109 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
     padding: 0.1em 0.4em;
     border: 1px solid var(--rule-soft);
   }
+
+  /* ---------- Accessibility primitives ---------- */
+
+  /* Skip-to-main link — only visible on keyboard focus */
+  .skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 100;
+    padding: 0.6rem 0.9rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    transform: translateY(-150%);
+    transition: transform 0.15s ease;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  /* Global keyboard focus ring — visible only when keyboard navigating */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Suppress focus ring on mouse interactions */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* High-contrast preference: bump rules and remove muted greys */
+  @media (prefers-contrast: more) {
+    :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+      --ink-muted: var(--ink);
+      --ink-soft:  var(--ink);
+      --rule-soft: var(--rule);
+    }
+
+    * { border-color: var(--rule) !important; }
+  }
+
+  /* Print styles — for board packs, save-as-PDF, paper printing */
+  @media print {
+    :root {
+      --ink: #000;
+      --ink-muted: #000;
+      --ink-soft: #333;
+      --paper: #fff;
+      --paper-alt: #fff;
+      --rule: #000;
+      --rule-soft: #999;
+      --accent: #000;
+      --accent-ink: #fff;
+      --grid-line: transparent;
+    }
+
+    body {
+      background: #fff;
+      color: #000;
+      font-family: 'Charter', 'Iowan Old Style', 'Georgia', serif;
+    }
+
+    .page { max-width: none; padding: 0; }
+
+    header.masthead nav,
+    .theme-toggle,
+    .skip-link,
+    .accent-rule,
+    .reveal { display: none !important; animation: none !important; }
+
+    a { color: #000; text-decoration: underline; }
+
+    a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: #555;
+    }
+
+    a[href^="mailto:"]::after { content: ""; }
+
+    section { page-break-inside: avoid; border-top: 1px solid #000; }
+    .stat-grid, ul.services, dl.facts, .faq, .contact-card, .footer-grid {
+      page-break-inside: avoid;
+    }
+
+    h1, h2, h3 { page-break-after: avoid; }
+  }
 </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="page">
     <Masthead />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />

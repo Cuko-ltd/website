@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Accessibility — Cuko Ltd';
+const description =
+  'Accessibility statement for cuko.uk. Conformance level, known issues, and how to report problems.';
+
+const url = `${SITE_URL}/accessibility`;
+const lastReviewed = new Date().toISOString().slice(0, 10);
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Accessibility', url },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero no-rule">
+    <span class="accent-rule" aria-hidden="true"></span>
+    <h1>Accessibility statement</h1>
+    <p>Cuko Ltd is committed to making cuko.uk usable by the widest possible audience, including users of assistive technology, users with low vision or colour-vision deficiency, keyboard-only users, and users on touch and switch devices.</p>
+  </section>
+
+  <section id="conformance">
+    <span class="section-label">→ Conformance</span>
+    <h2>Standards followed</h2>
+    <p>cuko.uk targets <strong class="emphasis">WCAG 2.2 Level AA</strong> across all public pages. The site is built and tested against the Web Content Accessibility Guidelines published by the W3C.</p>
+    <p>The site is also designed to support the inclusive-design dimensions referenced in the European Accessibility Act 2025 (EU Directive 2019/882) and the United Kingdom Equality Act 2010.</p>
+    <dl class="facts">
+      <dt>Conformance target</dt>
+      <dd>WCAG 2.2 Level AA</dd>
+
+      <dt>Page reach</dt>
+      <dd>All public pages on cuko.uk</dd>
+
+      <dt>Last reviewed</dt>
+      <dd>{lastReviewed}</dd>
+
+      <dt>Review cadence</dt>
+      <dd>At every release, plus quarterly manual audit</dd>
+    </dl>
+  </section>
+
+  <section id="features">
+    <span class="section-label">→ What is in place</span>
+    <h2>Accessibility features</h2>
+    <ul class="services">
+      <li>
+        <span class="svc-name">Semantic landmarks and heading hierarchy</span>
+        <span class="svc-desc">Every page uses semantic HTML5 landmarks (header, nav, main, section, footer) and a strict heading order with no skipped levels, so screen-reader navigation by landmark or heading is reliable.</span>
+      </li>
+      <li>
+        <span class="svc-name">Keyboard-first navigation</span>
+        <span class="svc-desc">All interactive elements are reachable and operable with a keyboard alone. A skip-to-main-content link is the first focusable element on every page. The current navigation item is conveyed both visually and via aria-current.</span>
+      </li>
+      <li>
+        <span class="svc-name">Visible focus indicators</span>
+        <span class="svc-desc">All interactive elements receive a high-contrast accent ring when focused via keyboard. Mouse users do not see the ring, preserving the visual design.</span>
+      </li>
+      <li>
+        <span class="svc-name">Colour and contrast</span>
+        <span class="svc-desc">Body text on background meets AAA (greater than 16:1). The accent colour passes WCAG AA in every role — both as a fill and as a stand-alone signal on background. Information is never conveyed by colour alone; it is reinforced by weight, position, icons, or text.</span>
+      </li>
+      <li>
+        <span class="svc-name">Colour-vision deficiency support</span>
+        <span class="svc-desc">The accent palette is electric blue, chosen to remain distinguishable across the most common colour-vision deficiencies (deuteranomaly, protanopia, tritanopia).</span>
+      </li>
+      <li>
+        <span class="svc-name">Manual theme override</span>
+        <span class="svc-desc">An AUTO / LIGHT / DARK toggle in the masthead lets users override the operating-system theme preference. Choice persists in localStorage.</span>
+      </li>
+      <li>
+        <span class="svc-name">Reduced-motion preference</span>
+        <span class="svc-desc">Users with the prefers-reduced-motion preference enabled see no animations: hero reveal is suppressed, the brand cursor stops blinking, the number counters snap directly to their final values, and smooth-scroll is disabled.</span>
+      </li>
+      <li>
+        <span class="svc-name">Increased-contrast preference</span>
+        <span class="svc-desc">Users with the prefers-contrast preference set to "more" see all rules and borders bumped to the strongest ink colour, and muted greys collapse to full ink.</span>
+      </li>
+      <li>
+        <span class="svc-name">Touch targets</span>
+        <span class="svc-desc">All interactive elements are at least 44 by 44 CSS pixels on touch devices, in line with WCAG 2.2 Success Criterion 2.5.5.</span>
+      </li>
+      <li>
+        <span class="svc-name">Print stylesheet</span>
+        <span class="svc-desc">When printed or saved as PDF, the site outputs a high-contrast monochrome layout with link URLs expanded inline so paper readers retain reference value.</span>
+      </li>
+      <li>
+        <span class="svc-name">Language declaration</span>
+        <span class="svc-desc">The document language is declared as en-GB so screen readers select the correct pronunciation profile.</span>
+      </li>
+      <li>
+        <span class="svc-name">Automated regression testing</span>
+        <span class="svc-desc">Every release runs Playwright smoke tests across six viewport sizes and an axe-core accessibility scan. Failures surface in continuous integration before deploy.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="known-issues">
+    <span class="section-label">→ Known limitations</span>
+    <h2>Known issues</h2>
+    <p>The following items are known to fall short of WCAG 2.2 Level AA. We are working to resolve them.</p>
+    <dl class="facts">
+      <dt>None reported</dt>
+      <dd>If you encounter an accessibility barrier, please report it using the contact details below. Reported barriers are tracked publicly in the project repository on GitHub.</dd>
+    </dl>
+  </section>
+
+  <section id="report">
+    <span class="section-label">→ Report a barrier</span>
+    <h2>How to contact us</h2>
+    <p>If any part of cuko.uk is not accessible to you, please tell us. We respond to accessibility reports within five working days and aim to resolve issues within thirty days, depending on complexity.</p>
+    <div class="contact-card">
+      <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk?subject=Accessibility%20issue%20on%20cuko.uk">samuel@cuko.uk</a></p>
+      <p><span class="label">GitHub</span> <a href="https://github.com/Cuko-ltd/website/issues">Open a public issue</a></p>
+    </div>
+  </section>
+
+  <section id="enforcement">
+    <span class="section-label">→ Enforcement</span>
+    <h2>Escalation</h2>
+    <p>If you are not satisfied with our response to an accessibility report, you may escalate to the relevant national enforcement body. In the United Kingdom that is the Equality Advisory and Support Service (EASS). In the European Union it is the national authority designated under the European Accessibility Act in your country of residence.</p>
+  </section>
+
+</BaseLayout>

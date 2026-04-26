@@ -2,7 +2,7 @@
 const year = new Date().getFullYear();
 ---
 
-<footer transition:persist="footer">
+<footer transition:persist="footer" aria-label="Site information">
   <div class="footer-grid">
     <div class="cell">
       <span class="label">Entity</span>
@@ -23,7 +23,8 @@ const year = new Date().getFullYear();
       <p><a href="https://github.com/Cuko-ltd">GitHub</a></p>
     </div>
     <div class="cell">
-      <span class="label">Build</span>
+      <span class="label">Site</span>
+      <p><a href="/accessibility">Accessibility</a></p>
       <p>GitHub Pages</p>
       <p>© {year} Cuko Ltd</p>
     </div>
