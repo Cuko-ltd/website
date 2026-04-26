@@ -1,100 +1,128 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, SERVICES, breadcrumbSchema, webPageSchema } from '../lib/seo';
 
-const title = 'Cuko Ltd — Fractional Hands-On CTO';
-const description = 'Fractional, hands-on CTO services for early-stage and regulated startups. Run by Samuel Ventimiglia through Cuko Ltd.';
+const title = 'Cuko Ltd — Fractional Hands-On CTO for Crypto, Healthcare, AI & Cloud';
+const description =
+  'Samuel Ventimiglia operates as a fractional, hands-on CTO through Cuko Ltd. Seventeen years of senior engineering leadership, 40+ production launches across crypto-native finance, healthcare, AI infrastructure, and cloud-native architecture.';
+
+const faqItems = [
+  {
+    question: 'What is a fractional CTO?',
+    answer:
+      'A fractional Chief Technology Officer is a senior engineering leader engaged on a part-time, ongoing basis — typically one to three days per week — rather than as a full-time hire. The role covers architecture, technical decision-making, hiring, board-level technical communication, and, in hands-on engagements, direct contribution to the codebase.',
+  },
+  {
+    question: 'Which industries do you work with?',
+    answer:
+      'Cuko Ltd serves four primary sectors: crypto-native finance (funds, OTC desks, exchanges, DeFi protocols), healthcare (clinical platforms and data-sensitive integrations), AI and agent infrastructure (LangChain-based systems and agentic architectures), and cloud-native strategy and implementation (AWS, Google Cloud, Kubernetes, real-time data pipelines).',
+  },
+  {
+    question: 'What is your minimum engagement?',
+    answer:
+      'One day per week. Engagements run from a single discovery sprint to multi-quarter build leadership. Day-rate, weekly retainer, and monthly retainer options are available.',
+  },
+  {
+    question: 'Are you based in the United Kingdom?',
+    answer:
+      'Yes. Samuel Ventimiglia is based in London, United Kingdom. Cuko Ltd is registered in England and Wales (Company no. 14989953) with its registered office in West London.',
+  },
+  {
+    question: 'Are you happy to work across different time zones?',
+    answer:
+      'Yes. Engagements with clients in North America, EMEA, and Asia are routine. Working hours are agreed at engagement start to ensure overlap with the client team.',
+  },
+  {
+    question: 'Do you handle compliance for regulated industries?',
+    answer:
+      'Yes. Compliance-first system design is one of the core engagement modes. Practical experience covers GDPR, DORA, MiCA, and EU AI Act-aligned architecture, including audit trails, data residency, and incident response. Three production data-breach incidents have been handled end-to-end.',
+  },
+  {
+    question: 'What technology stack do you use?',
+    answer:
+      'Day-to-day stack: Go, Python, SQL and NoSQL databases, Apache Kafka, NATS JetStream, Nginx, Docker, Kubernetes. Cloud: AWS and Google Cloud. AI tooling: LangChain, TensorFlow. Certifications include AWS and LangChain.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.answer,
+    },
+  })),
+};
+
+const pageSchemas = [
+  webPageSchema({
+    name: title,
+    description,
+    url: SITE_URL,
+  }),
+  breadcrumbSchema([{ name: 'Home', url: SITE_URL }]),
+  faqSchema,
+];
+
+const featuredServices = SERVICES.slice(0, 4);
 ---
 
-<Layout title={title} description={description}>
-  <header class="masthead">
-    <div class="brand">Cuko Ltd</div>
-    <div class="tagline">Fractional hands-on CTO</div>
-  </header>
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
 
-  <main>
+  <section class="hero">
+    <h1>A fractional CTO who ships code, carries compliance, and aligns engineering with the business — for crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups.</h1>
+    <p>Seventeen years of senior engineering leadership across four industries. Forty-plus systems taken to production — real-time trading infrastructure, healthcare platforms, AI integrations, regulated cloud-native architectures. Four products carried from constrained beta to worldwide scale; three data-breach incidents handled end-to-end.</p>
+    <p>Recent outcomes: an insurance product taken from a monolithic codebase to 430,000 users in eight months; a crypto hedge fund moved from spreadsheets to automated delta hedging within twelve months.</p>
+    <p>I work alongside your team, not above it: code lands, decisions get made, the board gets a straight answer.</p>
+  </section>
 
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <h1>TODO: one-sentence positioning. Who you help, what outcome, why fractional.</h1>
-      <p>TODO: 2–3 sentence elaboration. Concrete domains (e.g. crypto-native finance, regulated AI, agent infrastructure). Concrete outcome (shipped MVP, passed audit, cut infra cost).</p>
-    </section>
-
-    <!-- ================= WHAT I DO ================= -->
-    <section id="services">
-      <p class="section-label">What I do</p>
-      <h2>Engagement modes</h2>
-      <ul class="services">
+  <section id="services">
+    <p class="section-label">What I do</p>
+    <h2>Engagement modes</h2>
+    <ul class="services">
+      {featuredServices.map((svc) => (
         <li>
-          <span class="svc-name">Hands-on build lead</span>
-          <span class="svc-desc">TODO: ship code, own infra, own architecture decisions. Typical cadence: 2–3 days/week, 3–6 month engagements.</span>
+          <span class="svc-name">{svc.name}</span>
+          <span class="svc-desc">{svc.description}</span>
         </li>
-        <li>
-          <span class="svc-name">0→1 architecture</span>
-          <span class="svc-desc">TODO: stack selection, system design, build-vs-buy calls for greenfield products.</span>
-        </li>
-        <li>
-          <span class="svc-name">Technical due diligence</span>
-          <span class="svc-desc">TODO: pre-investment code, infra, team review for VCs and acquirers.</span>
-        </li>
-        <li>
-          <span class="svc-name">Crisis recovery</span>
-          <span class="svc-desc">TODO: stalled projects, post-incident infrastructure rescue, team unblock.</span>
-        </li>
-      </ul>
-    </section>
+      ))}
+    </ul>
+    <p class="cadence-note">
+      <a href="/services">See all engagement modes →</a>
+    </p>
+  </section>
 
-    <!-- ================= WHO I WORK WITH ================= -->
-    <section id="audience">
-      <p class="section-label">Who</p>
-      <h2>Who I work with</h2>
-      <p>TODO: stage, sector, situation. E.g. seed-to-Series-A startups in crypto-native finance, regulated AI, agent infrastructure. Founders who need a senior technical partner without a full-time hire yet.</p>
-      <p>TODO: optional second paragraph — what kinds of problems you specifically take. Compliance-sensitive systems, evidentiary infrastructure, autonomous trading systems, etc.</p>
-    </section>
+  <section id="audience">
+    <p class="section-label">Who</p>
+    <h2>Who I work with</h2>
+    <p>Seed-stage teams without a CTO yet. Series A companies between full-time hires. Later-stage scale-ups bringing in a specialist for a known problem. Enterprises absorbing a new technical capability. The common thread is a technical decision that needs to be right the first time.</p>
+    <p>Sectors I know deeply: <strong class="emphasis">crypto-native finance</strong> (funds, OTC desks, exchanges, DeFi protocols), <strong class="emphasis">healthcare</strong> (clinical platforms, data-sensitive integrations), <strong class="emphasis">AI and agent infrastructure</strong> (LangChain-based systems, agentic architectures, integration layers), and <strong class="emphasis">cloud-native strategy and implementation</strong> (AWS, Google Cloud, Kubernetes, real-time data pipelines). Engagements move fastest where two or more of these overlap.</p>
+  </section>
 
-    <!-- ================= SELECTED WORK ================= -->
-    <section id="work">
-      <p class="section-label">Work</p>
-      <h2>Selected experience</h2>
-      <dl class="facts">
-        <dt>TODO: client / project</dt>
-        <dd>TODO: outcome — one line, metric where possible</dd>
+  <section id="faq">
+    <p class="section-label">Questions</p>
+    <h2>Frequently asked</h2>
+    <dl class="faq">
+      {faqItems.map((f) => (
+        <>
+          <dt>{f.question}</dt>
+          <dd>{f.answer}</dd>
+        </>
+      ))}
+    </dl>
+  </section>
 
-        <dt>TODO: client / project</dt>
-        <dd>TODO: outcome</dd>
+  <section id="contact-cta">
+    <p class="section-label">Get in touch</p>
+    <h2>Start a conversation</h2>
+    <p>Discovery calls run thirty minutes, no obligation. The fastest route is email; calendar booking is available for confirmed engagements.</p>
+    <div class="contact-card">
+      <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk">samuel@cuko.uk</a></p>
+      <p><span class="label">More</span> <a href="/contact">All contact channels →</a></p>
+    </div>
+  </section>
 
-        <dt>TODO: client / project</dt>
-        <dd>TODO: outcome</dd>
-
-        <dt>Cuko AIP</dt>
-        <dd>Open protocol for soulbound AI-agent ownership records — specification, reference contracts, anchor service. <a href="https://github.com/Cuko-ltd">github.com/Cuko-ltd</a></dd>
-      </dl>
-    </section>
-
-    <!-- ================= ABOUT ================= -->
-    <section id="about">
-      <p class="section-label">About</p>
-      <h2>About</h2>
-      <p>TODO: 2–3 paragraphs. Who you are. Background — trading and compliance infrastructure for autonomous systems in crypto-native finance. Why fractional vs full-time. What "hands-on" means in your practice.</p>
-      <p>TODO: optional — credentials, prior employers, technical depth, languages/stacks you actually ship in.</p>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section id="contact">
-      <p class="section-label">Contact</p>
-      <h2>Get in touch</h2>
-      <p>TODO: one-line CTA. E.g. "Discovery calls are 30 minutes, no obligation. Best email is below."</p>
-
-      <div class="contact">
-        <p><span class="label">Email</span> <a href="mailto:sam@cuko.uk">sam@cuko.uk</a></p>
-        <p><span class="label">Calendar</span> <a href="#">TODO: cal.com or calendly link</a></p>
-        <p><span class="label">GitHub</span> <a href="https://github.com/Cuko-ltd">github.com/Cuko-ltd</a></p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>Cuko Ltd · Registered in England and Wales · Company no. 14989953</p>
-    <p>Registered office: 58 Twyford Avenue, W3 9QB, London, UK</p>
-  </footer>
-</Layout>
+</BaseLayout>

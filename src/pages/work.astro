@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Selected Work — Cuko Ltd Fractional CTO';
+const description =
+  'Selected engineering and CTO engagements led by Samuel Ventimiglia across crypto-native finance, healthcare, AI infrastructure, and cloud-native architecture.';
+
+const url = `${SITE_URL}/work`;
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Work', url },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero">
+    <h1>Selected work</h1>
+    <p>Forty-plus production systems shipped across seventeen years. The entries below are the ones most relevant to fractional-CTO engagements: scaled real-time platforms, regulatory-compliant architectures, agentic AI systems, and recovery work.</p>
+  </section>
+
+  <section id="entries">
+    <p class="section-label">Engagements</p>
+    <h2>By project</h2>
+
+    <dl class="facts">
+      <dt>Insurance platform</dt>
+      <dd>TODO Q8: role and dates · Re-architected a monolithic insurance product into a modular platform, taking it from internal beta to 430,000 users within eight months</dd>
+
+      <dt>Crypto hedge fund</dt>
+      <dd>TODO Q8: role and dates · Replaced spreadsheet-based position management with an automated delta-hedging system; full workflow live within twelve months</dd>
+
+      <dt>TODO Q8: third entry</dt>
+      <dd>TODO Q8: role + outcome with metric · year</dd>
+
+      <dt>Cuko AIP</dt>
+      <dd>Founder and lead engineer · open protocol for soulbound AI-agent ownership records — specification, reference contracts, anchor service · 2026 · <a href="https://github.com/Cuko-ltd">github.com/Cuko-ltd</a></dd>
+    </dl>
+  </section>
+
+  <section id="categories">
+    <p class="section-label">Patterns</p>
+    <h2>Recurring engagement shapes</h2>
+    <h3>Real-time and high-frequency systems</h3>
+    <p>Order routing, market-data ingestion, low-latency event pipelines. Stack typically Go or Rust on Linux, Kafka or NATS JetStream for transport, custom replay and snapshot tooling for recovery.</p>
+
+    <h3>Compliance-bound architectures</h3>
+    <p>GDPR, DORA, MiCA, and EU AI Act-aligned designs. Audit trails as first-class, data-residency boundaries enforced in code, breach posture rehearsed before incidents.</p>
+
+    <h3>0→1 platforms</h3>
+    <p>Greenfield product builds where the first architectural decision must hold for two to three years. Stack selection, build-versus-buy, hiring shape decisions made jointly with founders.</p>
+
+    <h3>Recovery and rescue</h3>
+    <p>Stalled projects, post-incident infrastructure rebuilds, systems that have outgrown their original design. Three production data-breach incidents handled to closure including regulator and board communication.</p>
+  </section>
+
+</BaseLayout>

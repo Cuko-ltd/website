@@ -1,0 +1,73 @@
+# Cuko Ltd — Fractional Hands-On CTO
+
+> Cuko Ltd is the consulting vehicle of Samuel Ventimiglia, a London-based fractional Chief Technology Officer. The company offers hands-on, compliance-aware engineering leadership to crypto-native finance firms, healthcare platforms, AI and agent-infrastructure startups, and cloud-native scale-ups.
+
+## Entity
+
+- **Name**: Cuko Ltd
+- **Type**: Private company limited by shares
+- **Jurisdiction**: England and Wales, United Kingdom
+- **Companies House number**: 14989953
+- **Registered office**: 58 Twyford Avenue, W3 9QB, London, United Kingdom
+- **Founder and operator**: Samuel Ventimiglia
+- **Founded**: 2026
+- **Website**: https://cuko.uk
+- **Primary email**: samuel@cuko.uk
+
+## Operator
+
+- **Name**: Samuel Ventimiglia
+- **Title**: Fractional Chief Technology Officer
+- **Location**: London, United Kingdom
+- **Languages**: English, Italian
+- **Experience**: 17+ years in senior engineering leadership
+- **Production launches**: 40+ shipped systems across four industries
+- **Scale work**: 4 products carried from constrained beta to worldwide scale
+- **Incident experience**: 3 production data-breach engagements handled end-to-end including regulator and board communication
+- **Certifications**: AWS, LangChain
+
+## Sectors served
+
+- Crypto-native finance — funds, OTC desks, exchanges, DeFi protocols
+- Healthcare — clinical platforms, data-sensitive integrations
+- AI and agent infrastructure — LangChain-based systems, agentic architectures, integration layers
+- Cloud-native strategy and implementation — AWS, Google Cloud, Kubernetes, real-time data pipelines
+
+## Engagement modes
+
+- **Hands-on build lead**: senior capacity that ships code alongside the in-house team
+- **0→1 architecture and stack selection**: greenfield system design, build-versus-buy, technology selection
+- **Compliance-first system design**: GDPR, DORA, MiCA, EU AI Act-aligned architecture
+- **Crisis recovery**: rescue of stalled projects, post-incident rebuilds, infrastructure remediation
+- **Engineering team scaling and hiring**: team structure, hiring loops, senior network access
+- **Technical due diligence**: pre-investment review for VCs, family offices, and acquirers
+- **Advisor**: monthly retainer with board attendance and technical input
+
+## Commercial terms
+
+- **Minimum engagement**: 1 day per week
+- **Pricing**: day rate, weekly retainer, or monthly retainer (rates on request)
+- **Typical length**: 3–6 months for build engagements; 1–4 weeks for due diligence; ongoing for advisor retainers
+- **Time zones**: engagements across North America, EMEA, and Asia are routine
+
+## Technology stack
+
+- **Languages**: Go, Python, SQL
+- **Data**: SQL and NoSQL databases, Apache Kafka, NATS JetStream
+- **Infrastructure**: Docker, Kubernetes, Nginx
+- **Cloud**: Amazon Web Services, Google Cloud
+- **AI tooling**: LangChain, TensorFlow
+
+## Pages
+
+- [Home](https://cuko.uk/): overview, services teaser, FAQ, contact
+- [Services](https://cuko.uk/services): full engagement modes and commercial terms
+- [Work](https://cuko.uk/work): selected engagements and recurring engagement shapes
+- [About](https://cuko.uk/about): operator background, stack, operating principles
+- [Contact](https://cuko.uk/contact): channels and engaging Cuko Ltd
+
+## Contact
+
+- Email: samuel@cuko.uk
+- GitHub: https://github.com/Cuko-ltd
+- LinkedIn: https://www.linkedin.com/in/ventimigliasamuel/

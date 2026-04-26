@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Contact — Cuko Ltd Fractional CTO';
+const description =
+  'Contact channels for Samuel Ventimiglia and Cuko Ltd: email, calendar booking for confirmed engagements, GitHub, and LinkedIn.';
+
+const url = `${SITE_URL}/contact`;
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Contact', url },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero">
+    <h1>Contact</h1>
+    <p>The fastest path to an engagement is email. Discovery calls run thirty minutes, no obligation. Replies within two working days.</p>
+  </section>
+
+  <section id="channels">
+    <p class="section-label">Channels</p>
+    <h2>How to reach me</h2>
+    <div class="contact-card">
+      <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk">samuel@cuko.uk</a></p>
+      <p><span class="label">LinkedIn</span> <a href="https://www.linkedin.com/in/ventimigliasamuel/" rel="me">linkedin.com/in/ventimigliasamuel</a></p>
+      <p><span class="label">GitHub</span> <a href="https://github.com/Cuko-ltd">github.com/Cuko-ltd</a></p>
+    </div>
+  </section>
+
+  <section id="best-fit">
+    <p class="section-label">Best fit</p>
+    <h2>Conversations I most want to have</h2>
+    <p>Founders of seed-to-Series-A companies in crypto-native finance, healthcare, or AI infrastructure who need senior technical leadership without a full-time hire yet.</p>
+    <p>Boards and operators of regulated scale-ups facing GDPR, DORA, MiCA, or EU AI Act compliance work with real engineering implications.</p>
+    <p>Investors and acquirers needing technical due diligence on early-stage targets — code, infrastructure, and team review delivered in plain language.</p>
+  </section>
+
+  <section id="company">
+    <p class="section-label">Entity</p>
+    <h2>Engaging Cuko Ltd</h2>
+    <p>Engagements are contracted through Cuko Ltd, a private company limited by shares registered in England and Wales (Company no. 14989953). Registered office: 58 Twyford Avenue, W3 9QB, London, United Kingdom. VAT and engagement-letter details supplied at contract stage.</p>
+  </section>
+
+</BaseLayout>

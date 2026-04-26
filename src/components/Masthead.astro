@@ -1,0 +1,90 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/work', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="masthead">
+  <div class="brand-row">
+    <a href="/" class="brand-link">
+      <div class="brand">Cuko Ltd</div>
+      <div class="tagline">Fractional hands-on CTO</div>
+    </a>
+  </div>
+  <nav aria-label="Primary" class="primary-nav">
+    <ul>
+      {navItems.map(({ href, label }) => {
+        const normalised = href.replace(/\/$/, '') || '/';
+        const isCurrent = normalised === currentPath;
+        return (
+          <li>
+            <a
+              href={href}
+              aria-current={isCurrent ? 'page' : undefined}
+              class:list={['nav-link', { 'is-current': isCurrent }]}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .brand-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
+
+  .brand-link:hover .brand {
+    color: var(--accent);
+  }
+
+  .primary-nav {
+    margin-top: 1rem;
+    font-family: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .primary-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+  }
+
+  .nav-link {
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.12s, border-color 0.12s;
+  }
+
+  .nav-link:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+
+  .nav-link.is-current {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+</style>

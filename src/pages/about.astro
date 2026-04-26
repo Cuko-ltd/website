@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'About — Samuel Ventimiglia, Fractional CTO at Cuko Ltd';
+const description =
+  'Samuel Ventimiglia is a fractional Chief Technology Officer based in London. Seventeen years of senior engineering leadership across crypto-native finance, healthcare, AI infrastructure, and cloud-native architecture.';
+
+const url = `${SITE_URL}/about`;
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'About', url },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero">
+    <h1>About</h1>
+    <p>Samuel Ventimiglia is a fractional Chief Technology Officer based in London, operating through Cuko Ltd. The work below sets out the experience, technology stack, and operating principles he brings to engagements.</p>
+  </section>
+
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <h2>Seventeen years, four industries</h2>
+    <p>Over the past seventeen years Samuel has led engineering across crypto-native finance, healthcare, AI and agent infrastructure, and cloud-native systems. Forty-plus production systems shipped, four products carried from constrained beta to worldwide scale, and three data-breach incidents handled end-to-end — including regulator engagement and board reporting.</p>
+    <p>The throughline is working closely with founders and boards to align engineering decisions with the business model, with feedback-loop cycles short enough that misalignment surfaces in weeks, not quarters.</p>
+    <!-- TODO Q9: prior employers / notable named projects, education, personal angle on why this work. -->
+  </section>
+
+  <section id="stack">
+    <p class="section-label">Stack</p>
+    <h2>Day-to-day tooling</h2>
+    <dl class="facts">
+      <dt>Languages</dt>
+      <dd>Go, Python, SQL</dd>
+
+      <dt>Data</dt>
+      <dd>SQL and NoSQL databases, Apache Kafka, NATS JetStream</dd>
+
+      <dt>Infrastructure</dt>
+      <dd>Docker, Kubernetes, Nginx</dd>
+
+      <dt>Cloud</dt>
+      <dd>Amazon Web Services, Google Cloud</dd>
+
+      <dt>AI tooling</dt>
+      <dd>LangChain, TensorFlow</dd>
+
+      <dt>Certifications</dt>
+      <dd>AWS, LangChain</dd>
+
+      <dt>Spoken</dt>
+      <dd>English, Italian</dd>
+    </dl>
+  </section>
+
+  <section id="principles">
+    <p class="section-label">Operating principles</p>
+    <h2>How engagements run</h2>
+    <h3>Code lands</h3>
+    <p>Hands-on engagements mean the CTO commits code, owns infrastructure, and takes architectural decisions to closure. Strategy without implementation is not a service Cuko Ltd offers.</p>
+
+    <h3>Compliance is shipped, not bolted on</h3>
+    <p>For regulated sectors, audit trails, data residency, and breach posture are designed into the system on day one — not added under regulator pressure. Three production breach engagements have validated this approach.</p>
+
+    <h3>The board gets a straight answer</h3>
+    <p>Engineering risk, technical debt, and roadmap trade-offs are communicated in business terms. Founders and boards know what they are buying and what they are deferring.</p>
+
+    <h3>The team grows with the system</h3>
+    <p>Engineering hires are made from a long-standing senior network. Team structure scales with the product without losing the founders' mental model — typically from two engineers to forty over a multi-year engagement.</p>
+  </section>
+
+  <section id="company">
+    <p class="section-label">Company</p>
+    <h2>Cuko Ltd</h2>
+    <p>Cuko Ltd is a private company limited by shares, registered in England and Wales (Company no. 14989953). Registered office: 58 Twyford Avenue, W3 9QB, London, United Kingdom. The trading name covers fractional-CTO consulting and the stewardship of Cuko AIP, an open protocol for AI-agent ownership records.</p>
+  </section>
+
+</BaseLayout>

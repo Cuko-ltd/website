@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, SERVICES, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Services — Cuko Ltd Fractional CTO';
+const description =
+  'Seven engagement modes offered through Cuko Ltd: hands-on build lead, 0→1 architecture, compliance-first system design, crisis recovery, engineering team scaling, technical due diligence, and advisor.';
+
+const url = `${SITE_URL}/services`;
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: SERVICES.map((svc, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    item: {
+      '@type': 'Service',
+      name: svc.name,
+      description: svc.description,
+      provider: {
+        '@type': 'Organization',
+        name: 'Cuko Ltd',
+        url: SITE_URL,
+      },
+      areaServed: 'Worldwide',
+    },
+  })),
+};
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Services', url },
+  ]),
+  itemListSchema,
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero">
+    <h1>Services</h1>
+    <p>Seven engagement modes, ordered from highest hands-on intensity to advisor-only. Most engagements blend two or three modes; the structure below makes it easier to pick the entry point.</p>
+  </section>
+
+  <section id="modes">
+    <p class="section-label">Engagement modes</p>
+    <h2>How I work</h2>
+    <ul class="services">
+      {SERVICES.map((svc) => (
+        <li>
+          <span class="svc-name">{svc.name}</span>
+          <span class="svc-desc">{svc.description}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="cadence">
+    <p class="section-label">Commercials</p>
+    <h2>Cadence and commitment</h2>
+    <dl class="facts">
+      <dt>Minimum</dt>
+      <dd>One day per week — anything less and the work does not compound</dd>
+
+      <dt>Pricing</dt>
+      <dd>Day rate, weekly retainer, or monthly retainer. Rates and availability on request.</dd>
+
+      <dt>Typical length</dt>
+      <dd>Three to six months for build engagements; one to four weeks for due diligence; ongoing for advisor retainers</dd>
+
+      <dt>Time zones</dt>
+      <dd>Engagements across North America, EMEA, and Asia are routine. Working hours agreed at engagement start.</dd>
+
+      <dt>Languages</dt>
+      <dd>English (native equivalent), Italian (native)</dd>
+    </dl>
+  </section>
+
+  <section id="next">
+    <p class="section-label">Next</p>
+    <h2>Start a conversation</h2>
+    <p>The fastest path to a sensible engagement is a thirty-minute discovery call. I read every email; expect a reply within two working days.</p>
+    <div class="contact-card">
+      <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk">samuel@cuko.uk</a></p>
+      <p><span class="label">Channels</span> <a href="/contact">All contact channels →</a></p>
+    </div>
+  </section>
+
+</BaseLayout>
