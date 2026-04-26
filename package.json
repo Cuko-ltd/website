@@ -8,9 +8,15 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test",
+    "test:smoke": "playwright test smoke.spec.ts",
+    "test:visual": "playwright test visual.spec.ts",
+    "test:update": "playwright test --update-snapshots",
+    "test:report": "playwright show-report"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "astro": "^5.0.0"
   },
   "dependencies": {

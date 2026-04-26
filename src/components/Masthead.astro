@@ -49,6 +49,27 @@ const buildId = new Date().toISOString().slice(0, 10);
   </nav>
 </header>
 
+<script>
+  function updateNavCurrent() {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const links = document.querySelectorAll<HTMLAnchorElement>(
+      'header.masthead nav a.nav-link',
+    );
+    links.forEach((a) => {
+      const href = a.pathname.replace(/\/$/, '') || '/';
+      const isCurrent = href === path;
+      a.classList.toggle('is-current', isCurrent);
+      if (isCurrent) {
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', updateNavCurrent);
+</script>
+
 <style>
   .masthead {
     margin-bottom: 2rem;

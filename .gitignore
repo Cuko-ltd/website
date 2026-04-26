@@ -10,3 +10,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .vscode/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Visual regression baselines — regenerate locally with `npm run test:update`
+tests/visual.spec.ts-snapshots/
