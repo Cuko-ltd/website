@@ -39,16 +39,29 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
 <link rel="alternate" hreflang="en-GB" href={canonicalURL} />
 <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content="Cuko Ltd" />
 <meta property="og:locale" content="en_GB" />
+<meta property="og:image" content="https://cuko.uk/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Cuko Ltd — Fractional Hands-On CTO" />
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content="https://cuko.uk/og-image.png" />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cuko Ltd">
+  <title>Cuko</title>
+  <desc>Cuko wordmark — Cuko in ink, underscore cursor in accent.</desc>
+  <style>
+    .ink    { fill: #0a0a0a; }
+    .accent { fill: #1f4dff; }
+    @media (prefers-color-scheme: dark) {
+      .ink    { fill: #f4f3ee; }
+      .accent { fill: #6184ff; }
+    }
+    text {
+      font-family: 'JetBrains Mono', 'JetBrains Mono Variable', 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+  </style>
+  <text x="20" y="86" font-size="92">
+    <tspan class="ink">Cuko</tspan><tspan class="accent">_</tspan>
+  </text>
+</svg>

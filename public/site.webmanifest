@@ -1,0 +1,36 @@
+{
+  "name": "Cuko Ltd — Fractional Hands-On CTO",
+  "short_name": "Cuko",
+  "description": "Samuel Ventimiglia — Fractional Hands-On CTO at Cuko Ltd. Crypto-native finance, healthcare, AI infrastructure, cloud-native scale-ups.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "background_color": "#f4f3ee",
+  "theme_color": "#1f4dff",
+  "lang": "en-GB",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}
