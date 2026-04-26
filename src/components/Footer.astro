@@ -2,8 +2,88 @@
 const year = new Date().getFullYear();
 ---
 
-<footer>
-  <p>Cuko Ltd · Registered in England and Wales · Company no. 14989953</p>
-  <p>Registered office: 58 Twyford Avenue, W3 9QB, London, United Kingdom</p>
-  <p>© {year} Cuko Ltd. All rights reserved.</p>
+<footer transition:persist="footer">
+  <div class="footer-grid">
+    <div class="cell">
+      <span class="label">Entity</span>
+      <p>Cuko Ltd</p>
+      <p>Company no. 14989953</p>
+      <p>England &amp; Wales</p>
+    </div>
+    <div class="cell">
+      <span class="label">Office</span>
+      <p>58 Twyford Avenue</p>
+      <p>W3 9QB · London</p>
+      <p>United Kingdom</p>
+    </div>
+    <div class="cell">
+      <span class="label">Contact</span>
+      <p><a href="mailto:samuel@cuko.uk">samuel@cuko.uk</a></p>
+      <p><a href="https://www.linkedin.com/in/ventimigliasamuel/" rel="me">LinkedIn</a></p>
+      <p><a href="https://github.com/Cuko-ltd">GitHub</a></p>
+    </div>
+    <div class="cell">
+      <span class="label">Build</span>
+      <p>Astro · Static</p>
+      <p>GitHub Pages</p>
+      <p>© {year} Cuko Ltd</p>
+    </div>
+  </div>
 </footer>
+
+<style>
+  footer {
+    margin-top: 5rem;
+    border-top: 4px solid var(--rule);
+    padding-top: 2rem;
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0;
+    border: 2px solid var(--rule);
+  }
+
+  .cell {
+    padding: 1rem 1.2rem;
+    border-right: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .cell:last-child { border-right: none; }
+
+  @media (max-width: 720px) {
+    .cell {
+      border-right: none;
+    }
+  }
+
+  .label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  footer p { margin: 0 0 0.2rem; }
+
+  footer a {
+    color: var(--ink-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--rule-soft);
+    text-underline-offset: 3px;
+  }
+
+  footer a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+</style>

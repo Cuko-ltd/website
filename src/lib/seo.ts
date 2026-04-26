@@ -58,6 +58,11 @@ export const SERVICES = [
       'Greenfield system design, build-versus-buy assessment, and technology selection that holds up under investor and regulatory scrutiny.',
   },
   {
+    name: 'AI integration and development',
+    description:
+      'Embedding LangChain-based agents, retrieval pipelines, and inference layers into existing products; greenfield agentic systems where the agent is the product. Practical experience with LangChain, TensorFlow, and the integration layer between AI capabilities and regulated production systems.',
+  },
+  {
     name: 'Compliance-first system design',
     description:
       'GDPR, DORA, MiCA, and EU AI Act-aligned architecture with audit trails, data residency, and breach posture designed in from day one.',

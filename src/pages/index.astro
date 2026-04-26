@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NumberCounter from '../components/NumberCounter.astro';
 import { SITE_URL, SERVICES, breadcrumbSchema, webPageSchema } from '../lib/seo';
 
 const title = 'Cuko Ltd — Fractional Hands-On CTO for Crypto, Healthcare, AI & Cloud';
@@ -72,15 +73,46 @@ const featuredServices = SERVICES.slice(0, 4);
 
 <BaseLayout title={title} description={description} structuredData={pageSchemas}>
 
-  <section class="hero">
-    <h1>A fractional CTO who ships code, carries compliance, and aligns engineering with the business — for crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups.</h1>
-    <p>Seventeen years of senior engineering leadership across four industries. Forty-plus systems taken to production — real-time trading infrastructure, healthcare platforms, AI integrations, regulated cloud-native architectures. Four products carried from constrained beta to worldwide scale; three data-breach incidents handled end-to-end.</p>
-    <p>Recent outcomes: an insurance product taken from a monolithic codebase to 430,000 users in eight months; a crypto hedge fund moved from spreadsheets to automated delta hedging within twelve months.</p>
-    <p>I work alongside your team, not above it: code lands, decisions get made, the board gets a straight answer.</p>
+  <section class="hero no-rule">
+    <span class="accent-rule" aria-hidden="true"></span>
+    <h1 class="reveal delay-1">
+      A fractional CTO who <span class="accent">ships code</span>, carries compliance, and aligns engineering with the business.
+    </h1>
+    <p class="reveal delay-2">
+      For crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups. Seventeen years of senior engineering leadership across four industries.
+    </p>
+    <p class="reveal delay-3">
+      Recent outcomes: an insurance product taken from a monolithic codebase to <strong class="emphasis">430,000 users</strong> in eight months; a crypto hedge fund moved from spreadsheets to <strong class="emphasis">automated delta hedging</strong> within twelve months.
+    </p>
+    <p class="reveal delay-4">
+      I work alongside your team, not above it. Code lands, decisions get made, the board gets a straight answer.
+    </p>
+  </section>
+
+  <section id="metrics" class="no-rule">
+    <span class="section-label">Track record</span>
+    <div class="stat-grid">
+      <div class="stat">
+        <span class="stat-value"><NumberCounter value={17} /></span>
+        <span class="stat-label">Years leading engineering</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value"><NumberCounter value={40} suffix="+" /></span>
+        <span class="stat-label">Production launches</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value"><NumberCounter value={4} /></span>
+        <span class="stat-label">Industries shipped in</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value"><NumberCounter value={430000} format="comma" /></span>
+        <span class="stat-label">Users on a single platform</span>
+      </div>
+    </div>
   </section>
 
   <section id="services">
-    <p class="section-label">What I do</p>
+    <span class="section-label">→ What I do</span>
     <h2>Engagement modes</h2>
     <ul class="services">
       {featuredServices.map((svc) => (
@@ -91,19 +123,19 @@ const featuredServices = SERVICES.slice(0, 4);
       ))}
     </ul>
     <p class="cadence-note">
-      <a href="/services">See all engagement modes →</a>
+      <a href="/services" class="arrow-link">See all engagement modes →</a>
     </p>
   </section>
 
   <section id="audience">
-    <p class="section-label">Who</p>
+    <span class="section-label">→ Who</span>
     <h2>Who I work with</h2>
     <p>Seed-stage teams without a CTO yet. Series A companies between full-time hires. Later-stage scale-ups bringing in a specialist for a known problem. Enterprises absorbing a new technical capability. The common thread is a technical decision that needs to be right the first time.</p>
     <p>Sectors I know deeply: <strong class="emphasis">crypto-native finance</strong> (funds, OTC desks, exchanges, DeFi protocols), <strong class="emphasis">healthcare</strong> (clinical platforms, data-sensitive integrations), <strong class="emphasis">AI and agent infrastructure</strong> (LangChain-based systems, agentic architectures, integration layers), and <strong class="emphasis">cloud-native strategy and implementation</strong> (AWS, Google Cloud, Kubernetes, real-time data pipelines). Engagements move fastest where two or more of these overlap.</p>
   </section>
 
   <section id="faq">
-    <p class="section-label">Questions</p>
+    <span class="section-label">→ Questions</span>
     <h2>Frequently asked</h2>
     <dl class="faq">
       {faqItems.map((f) => (
@@ -116,12 +148,12 @@ const featuredServices = SERVICES.slice(0, 4);
   </section>
 
   <section id="contact-cta">
-    <p class="section-label">Get in touch</p>
+    <span class="section-label">→ Get in touch</span>
     <h2>Start a conversation</h2>
-    <p>Discovery calls run thirty minutes, no obligation. The fastest route is email; calendar booking is available for confirmed engagements.</p>
+    <p>Discovery calls run thirty minutes, no obligation. The fastest route is email.</p>
     <div class="contact-card">
       <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk">samuel@cuko.uk</a></p>
-      <p><span class="label">More</span> <a href="/contact">All contact channels →</a></p>
+      <p><span class="label">More</span> <a href="/contact" class="arrow-link">All contact channels →</a></p>
     </div>
   </section>
 

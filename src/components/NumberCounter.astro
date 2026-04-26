@@ -1,0 +1,97 @@
+---
+interface Props {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  duration?: number;
+  format?: 'plain' | 'comma';
+}
+
+const { value, prefix = '', suffix = '', duration = 1400, format = 'plain' } = Astro.props;
+---
+
+<span
+  class="number-counter"
+  data-target={value}
+  data-duration={duration}
+  data-prefix={prefix}
+  data-suffix={suffix}
+  data-format={format}
+  aria-label={`${prefix}${value}${suffix}`}
+>{prefix}<span class="num">0</span>{suffix}</span>
+
+<script>
+  function format(n: number, mode: string): string {
+    if (mode === 'comma') return Math.floor(n).toLocaleString('en-GB');
+    return Math.floor(n).toString();
+  }
+
+  function animate(el: HTMLElement) {
+    if (el.dataset.animated === '1') return;
+    el.dataset.animated = '1';
+
+    const target = Number(el.dataset.target ?? 0);
+    const duration = Number(el.dataset.duration ?? 1400);
+    const fmt = el.dataset.format ?? 'plain';
+    const numEl = el.querySelector<HTMLElement>('.num');
+    if (!numEl) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      numEl.textContent = format(target, fmt);
+      return;
+    }
+
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      numEl.textContent = format(target * eased, fmt);
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function init() {
+    const counters = document.querySelectorAll<HTMLElement>('.number-counter');
+    if (counters.length === 0) return;
+
+    if (!('IntersectionObserver' in window)) {
+      counters.forEach((el) => animate(el));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            animate(entry.target as HTMLElement);
+            obs.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -10% 0px' },
+    );
+
+    counters.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const inView =
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom > 0;
+      if (inView) {
+        animate(el);
+      } else {
+        io.observe(el);
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .number-counter {
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+</style>

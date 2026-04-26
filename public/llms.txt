@@ -37,6 +37,7 @@
 
 - **Hands-on build lead**: senior capacity that ships code alongside the in-house team
 - **0→1 architecture and stack selection**: greenfield system design, build-versus-buy, technology selection
+- **AI integration and development**: LangChain-based agents, retrieval pipelines, inference layers, greenfield agentic systems
 - **Compliance-first system design**: GDPR, DORA, MiCA, EU AI Act-aligned architecture
 - **Crisis recovery**: rescue of stalled projects, post-incident rebuilds, infrastructure remediation
 - **Engineering team scaling and hiring**: team structure, hiring loops, senior network access
