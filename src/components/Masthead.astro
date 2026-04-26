@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import { BOOKING_URL, CTA_LABEL } from '../lib/seo';
 
 const navItems = [
   { href: '/', label: 'Home', code: '00' },
@@ -28,6 +29,16 @@ const buildId = new Date().toISOString().slice(0, 10);
         <span class="brand-name">Cuko</span><span class="brand-cursor">_</span>
       </div>
       <div class="tagline mono">Cuko Ltd · Fractional Hands-on CTO</div>
+    </a>
+    <a
+      href={BOOKING_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="masthead-cta mono"
+      aria-label={`${CTA_LABEL} — opens Google Calendar in a new tab`}
+    >
+      <span>{CTA_LABEL}</span>
+      <span aria-hidden="true">↗</span>
     </a>
   </div>
 
@@ -116,6 +127,14 @@ const buildId = new Date().toISOString().slice(0, 10);
     .top-bar { justify-content: flex-end; }
   }
 
+  .brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+  }
+
   .brand-link {
     text-decoration: none;
     color: inherit;
@@ -123,6 +142,57 @@ const buildId = new Date().toISOString().slice(0, 10);
   }
 
   .brand-link:hover .brand-name { color: var(--accent); }
+
+  .masthead-cta {
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 2px solid var(--ink);
+    padding: 0.7rem 1rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .masthead-cta:hover {
+    color: var(--accent-ink);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .masthead-cta:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+
+  .masthead-cta:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  /* Hide masthead CTA on small screens — sticky CTA covers it. */
+  @media (max-width: 720px) {
+    .masthead-cta { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .masthead-cta,
+    .masthead-cta:hover,
+    .masthead-cta:active {
+      transform: none;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: none;
+    }
+  }
 
   .brand {
     font-weight: 600;

@@ -1,0 +1,77 @@
+---
+import { BOOKING_URL, CTA_LABEL } from '../lib/seo';
+---
+
+<a
+  href={BOOKING_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="sticky-cta mono"
+  aria-label={`${CTA_LABEL} — opens Google Calendar in a new tab`}
+>
+  <span class="sticky-cta-text">{CTA_LABEL}</span>
+  <span class="sticky-cta-arrow" aria-hidden="true">↗</span>
+</a>
+
+<style>
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    right: max(1rem, env(safe-area-inset-right, 1rem));
+    bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
+    padding: 0.85rem 1.1rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 2px solid var(--ink);
+    text-decoration: none;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    box-shadow: 4px 4px 0 var(--ink);
+    min-height: 44px;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .sticky-cta:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+    color: var(--accent-ink);
+  }
+
+  .sticky-cta:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+
+  .sticky-cta:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  /* Show only on touch / small viewports — desktop already has masthead CTA. */
+  @media (max-width: 720px) {
+    .sticky-cta {
+      display: inline-flex;
+    }
+  }
+
+  /* Respect reduced-motion: no transform / shadow shift. */
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta,
+    .sticky-cta:hover,
+    .sticky-cta:active {
+      transition: none;
+      transform: none;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+  }
+
+  /* Hide when printing. */
+  @media print {
+    .sticky-cta { display: none !important; }
+  }
+</style>

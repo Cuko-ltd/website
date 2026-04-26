@@ -1,4 +1,6 @@
 export const SITE_URL = 'https://cuko.uk';
+export const BOOKING_URL = 'https://calendar.app.google/6cpfUFXXNWYrquBa7';
+export const CTA_LABEL = 'Book a discovery call';
 
 export const PERSON = {
   name: 'Samuel Ventimiglia',
