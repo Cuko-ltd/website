@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Regulatory compliance — Cuko Ltd';
+const description =
+  'How Cuko Ltd delivers GDPR, MiCA, DORA, and EU AI Act-aligned engineering for crypto-native finance, healthcare, AI infrastructure, and regulated cloud-native systems.';
+
+const url = `${SITE_URL}/compliance`;
+
+const regulationServices = [
+  {
+    name: 'GDPR-aligned system design and breach response',
+    description:
+      'Design, deliver, and rehearse systems that meet UK and EU GDPR requirements end-to-end — from data inventories and DPIAs through to breach playbooks and supervisory-authority correspondence. Three production data-breach incidents handled to closure.',
+    knowsAbout: [
+      'UK GDPR',
+      'EU GDPR',
+      'Data Protection Act 2018',
+      'Article 5 lawful processing',
+      'Article 25 data protection by design',
+      'Article 30 records of processing',
+      'Article 32 security of processing',
+      'Article 33 breach notification',
+      'Article 35 data protection impact assessment',
+    ],
+  },
+  {
+    name: 'MiCA crypto-asset service compliance',
+    description:
+      'Architecture and engineering aligned with the EU Markets in Crypto-Assets Regulation (Regulation (EU) 2023/1114). Licence-readiness work for crypto-asset service providers (CASPs), including governance, complaints handling, conflict-of-interest controls, and operational resilience.',
+    knowsAbout: [
+      'Markets in Crypto-Assets Regulation',
+      'MiCA Title III asset-referenced tokens',
+      'MiCA Title IV e-money tokens',
+      'MiCA Title V CASP authorisation',
+      'MiCA Articles 67–69 governance and operational requirements',
+      'MiCA Articles 75–79 conduct and conflicts',
+      'EBA technical standards',
+      'ESMA technical standards',
+    ],
+  },
+  {
+    name: 'DORA digital operational resilience',
+    description:
+      'ICT risk management, incident classification and reporting, resilience testing, and third-party-risk programmes aligned with the EU Digital Operational Resilience Act (Regulation (EU) 2022/2554) for financial entities and their critical ICT providers.',
+    knowsAbout: [
+      'Digital Operational Resilience Act',
+      'DORA Articles 5–10 ICT risk management',
+      'DORA Articles 17–23 ICT-related incident management',
+      'DORA Articles 24–27 digital operational resilience testing',
+      'DORA Articles 28–30 third-party ICT risk',
+      'Register of information',
+      'Threat-led penetration testing',
+    ],
+  },
+  {
+    name: 'EU AI Act-aligned AI system deployment',
+    description:
+      'Risk classification, documentation, post-market monitoring, and tamper-evident logging for AI systems falling under the EU Artificial Intelligence Act (Regulation (EU) 2024/1689). Practical experience designing for Article 12 logging and high-risk-system obligations.',
+    knowsAbout: [
+      'EU Artificial Intelligence Act',
+      'AI Act Article 6 high-risk classification',
+      'AI Act Article 12 record-keeping',
+      'AI Act Article 14 human oversight',
+      'AI Act Article 17 quality management',
+      'AI Act Article 72 post-market monitoring',
+      'CE marking for AI systems',
+    ],
+  },
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: regulationServices.map((svc, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    item: {
+      '@type': 'Service',
+      name: svc.name,
+      description: svc.description,
+      provider: {
+        '@type': 'Organization',
+        name: 'Cuko Ltd',
+        url: SITE_URL,
+      },
+      areaServed: 'Worldwide',
+      knowsAbout: svc.knowsAbout,
+    },
+  })),
+};
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Compliance', url },
+  ]),
+  itemListSchema,
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero no-rule">
+    <span class="accent-rule" aria-hidden="true"></span>
+    <h1>Regulatory compliance</h1>
+    <p>Compliance is engineering work, not paperwork at the end. The regulations below shape the systems Cuko Ltd builds: how data flows, how identities are anchored, how incidents are detected and reported, and how the controls hold up under audit.</p>
+    <p>Each block lists the articles I implement against, the deliverables produced, and an indication of past delivery. For depth on a specific regulation or article, get in touch.</p>
+  </section>
+
+  <section id="gdpr">
+    <span class="section-label">→ GDPR</span>
+    <h2>UK GDPR and EU GDPR</h2>
+    <p>The General Data Protection Regulation governs how personal data is processed in the United Kingdom (UK GDPR + Data Protection Act 2018) and the European Economic Area (EU GDPR). Cuko Ltd has been designing GDPR-compliant systems since 2018 enforcement.</p>
+
+    <h3>Articles I implement against</h3>
+    <dl class="facts">
+      <dt>Article 5</dt>
+      <dd>Lawful processing, purpose limitation, data minimisation, accuracy, storage limitation, integrity, accountability</dd>
+      <dt>Article 25</dt>
+      <dd>Data protection by design and by default</dd>
+      <dt>Article 30</dt>
+      <dd>Records of processing activities (RoPA)</dd>
+      <dt>Article 32</dt>
+      <dd>Security of processing — technical and organisational measures</dd>
+      <dt>Article 33</dt>
+      <dd>Personal-data breach notification within 72 hours</dd>
+      <dt>Article 35</dt>
+      <dd>Data Protection Impact Assessments (DPIA)</dd>
+    </dl>
+
+    <h3>What I deliver</h3>
+    <p>Data inventories tied to source code; DPIA templates and reviews; breach detection, classification, and notification playbooks rehearsed before incidents; sub-processor flow diagrams; lawful-basis maps; data-subject-request runbooks.</p>
+
+    <h3>Past delivery</h3>
+    <p>Three production data-breach engagements handled end-to-end — including 72-hour ICO notification, board reporting, supervisory-authority correspondence, and remediation engineering.</p>
+  </section>
+
+  <section id="mica">
+    <span class="section-label">→ MiCA</span>
+    <h2>Markets in Crypto-Assets Regulation</h2>
+    <p>MiCA (Regulation (EU) 2023/1114) is the EU's harmonised framework for crypto-asset issuers and crypto-asset service providers (CASPs). Stablecoin and asset-referenced-token requirements applied from 30 June 2024; CASP requirements applied from 30 December 2024.</p>
+
+    <h3>Articles I implement against</h3>
+    <dl class="facts">
+      <dt>Title III</dt>
+      <dd>Asset-referenced token requirements — issuer authorisation, reserve composition, redemption rights</dd>
+      <dt>Title IV</dt>
+      <dd>E-money token requirements — equivalence to e-money, scheme governance</dd>
+      <dt>Title V</dt>
+      <dd>CASP authorisation, ongoing requirements, conduct of business</dd>
+      <dt>Articles 67–69</dt>
+      <dd>Prudential safeguards, governance arrangements, business continuity</dd>
+      <dt>Articles 75–79</dt>
+      <dd>Conflicts of interest, complaints handling, custody and administration</dd>
+    </dl>
+
+    <h3>What I deliver</h3>
+    <p>Licence-readiness assessments; governance and three-lines-of-defence design; conflict-of-interest registers; complaints-handling pipelines tied to ticketing; segregation of client-asset accounting; ESMA and EBA technical-standard alignment.</p>
+
+    <h3>Past delivery</h3>
+    <p>TODO: anonymised summary of MiCA-aligned engagement.</p>
+  </section>
+
+  <section id="dora">
+    <span class="section-label">→ DORA</span>
+    <h2>Digital Operational Resilience Act</h2>
+    <p>DORA (Regulation (EU) 2022/2554) establishes uniform requirements for the digital operational resilience of financial entities in the EU. It applied from 17 January 2025 and covers ICT risk management, incident reporting, resilience testing, and third-party-risk oversight.</p>
+
+    <h3>Articles I implement against</h3>
+    <dl class="facts">
+      <dt>Articles 5–10</dt>
+      <dd>ICT risk-management framework, identification, protection, detection, response, recovery</dd>
+      <dt>Articles 17–23</dt>
+      <dd>ICT-related incident management — classification, major-incident notification, root-cause analysis</dd>
+      <dt>Articles 24–27</dt>
+      <dd>Digital operational resilience testing — scenario-based tests and threat-led penetration testing</dd>
+      <dt>Articles 28–30</dt>
+      <dd>Third-party ICT risk — register of information, contractual arrangements, exit strategies</dd>
+    </dl>
+
+    <h3>What I deliver</h3>
+    <p>ICT-risk frameworks aligned to ISO 27001 and NIST CSF; incident-classification rules wired into observability stacks; register-of-information templates; threat-led penetration test scopes; exit-strategy runbooks for critical third-party ICT providers.</p>
+
+    <h3>Past delivery</h3>
+    <p>TODO: anonymised summary of DORA-aligned engagement.</p>
+  </section>
+
+  <section id="ai-act">
+    <span class="section-label">→ EU AI Act</span>
+    <h2>EU Artificial Intelligence Act</h2>
+    <p>The EU AI Act (Regulation (EU) 2024/1689) entered into force in August 2024 with staged application: prohibitions from February 2025, GPAI obligations from August 2025, high-risk system obligations from August 2026, and full application from August 2027.</p>
+
+    <h3>Articles I implement against</h3>
+    <dl class="facts">
+      <dt>Article 6</dt>
+      <dd>High-risk AI system classification</dd>
+      <dt>Article 12</dt>
+      <dd>Record-keeping — automatic logging of events for post-market traceability</dd>
+      <dt>Article 14</dt>
+      <dd>Human oversight design</dd>
+      <dt>Article 17</dt>
+      <dd>Quality-management system for providers</dd>
+      <dt>Article 72</dt>
+      <dd>Post-market monitoring</dd>
+    </dl>
+
+    <h3>What I deliver</h3>
+    <p>Risk classifications; tamper-evident logging architectures; human-oversight UX patterns; quality-management frameworks; post-market monitoring pipelines; CE-marking documentation packs.</p>
+
+    <h3>Past delivery</h3>
+    <p>Cuko AIP — open protocol for cryptographic AI-agent ownership records, designed against Article 12 logging requirements. <a href="https://github.com/Cuko-ltd">github.com/Cuko-ltd</a>.</p>
+  </section>
+
+  <section id="how-to-engage">
+    <span class="section-label">→ Engaging</span>
+    <h2>Where to start</h2>
+    <p>Compliance work usually begins with a one-week diagnostic — current state mapped against the regulation, gap register produced, prioritised remediation plan delivered to the board. Diagnostic outputs convert directly into a build engagement if you choose to proceed.</p>
+    <div class="contact-card">
+      <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk?subject=Compliance%20enquiry">samuel@cuko.uk</a></p>
+      <p><span class="label">More</span> <a href="/services" class="arrow-link">All engagement modes →</a></p>
+    </div>
+  </section>
+
+</BaseLayout>

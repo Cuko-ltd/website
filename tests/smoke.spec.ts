@@ -32,9 +32,9 @@ for (const page of pages) {
       await expect(p.locator('header.masthead')).toBeVisible();
       // Brand cursor logo present
       await expect(p.locator('.brand-cursor')).toBeVisible();
-      // Nav has at least 5 items
+      // Nav has 6 primary items
       const navLinks = p.locator('header.masthead nav a.nav-link');
-      await expect(navLinks).toHaveCount(5);
+      await expect(navLinks).toHaveCount(6);
       // Footer present
       await expect(p.locator('footer')).toBeVisible();
 

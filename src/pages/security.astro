@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Security — responsible disclosure policy — Cuko Ltd';
+const description =
+  'Responsible disclosure policy for cuko.uk. How to report a vulnerability, what is in scope, safe-harbour terms, and service-level expectations.';
+
+const url = `${SITE_URL}/security`;
+const lastUpdated = new Date().toISOString().slice(0, 10);
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Security', url },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero no-rule">
+    <span class="accent-rule" aria-hidden="true"></span>
+    <h1>Security disclosure policy</h1>
+    <p>Cuko Ltd welcomes reports of security weaknesses in cuko.uk and the open-source projects published under the github.com/Cuko-ltd organisation. This page sets out scope, safe harbour, submission steps, and the response timeline you can expect.</p>
+    <p>The machine-readable companion is published at <a href="/.well-known/security.txt"><code class="inline">/.well-known/security.txt</code></a>, conforming to RFC 9116.</p>
+  </section>
+
+  <section id="scope">
+    <span class="section-label">→ Scope</span>
+    <h2>What is covered</h2>
+    <h3>In scope</h3>
+    <ul class="services">
+      <li><span class="svc-name">cuko.uk</span><span class="svc-desc">The static marketing site you are reading, including all sub-paths and the published machine-readable artefacts (sitemap, robots, llms.txt, security.txt).</span></li>
+      <li><span class="svc-name">Cuko AIP and related repositories</span><span class="svc-desc">Public repositories under <a href="https://github.com/Cuko-ltd">github.com/Cuko-ltd</a>, including the protocol specification, anchor contracts, anchor service, SDKs, and worked examples.</span></li>
+    </ul>
+
+    <h3>Out of scope</h3>
+    <ul class="services">
+      <li><span class="svc-name">GitHub Pages infrastructure</span><span class="svc-desc">Vulnerabilities in GitHub Pages itself, GitHub authentication, or Microsoft hosting infrastructure should be reported to <a href="https://docs.github.com/en/site-policy/security-policies/github-bug-bounty-program-legal-safe-harbor">GitHub's bug-bounty programme</a>.</span></li>
+      <li><span class="svc-name">Best-practice scoring without impact</span><span class="svc-desc">Reports based purely on automated-scanner output (e.g. missing security headers, CSP recommendations) without a demonstrated impact path are valued but not eligible for prioritised response.</span></li>
+      <li><span class="svc-name">Social engineering of staff or clients</span><span class="svc-desc">Phishing, vishing, or any social-engineering attempt against Cuko Ltd personnel, contractors, or clients is out of scope and not authorised.</span></li>
+      <li><span class="svc-name">Denial-of-service testing</span><span class="svc-desc">DoS, DDoS, or volumetric load testing is out of scope and not authorised.</span></li>
+      <li><span class="svc-name">Physical security</span><span class="svc-desc">Office, premises, or device-level physical access is out of scope.</span></li>
+    </ul>
+  </section>
+
+  <section id="safe-harbour">
+    <span class="section-label">→ Safe harbour</span>
+    <h2>Good-faith research is welcome</h2>
+    <p>Cuko Ltd will not pursue legal action against researchers who:</p>
+    <p>act in good faith and avoid privacy violations, destruction of data, and degradation of service; only test against assets explicitly listed in scope; report any vulnerability they discover promptly through the contact channel below; and give Cuko Ltd a reasonable opportunity to remediate before any public disclosure.</p>
+    <p>This policy is intended to be compatible with the safe-harbour provisions of the UK Computer Misuse Act 1990 (as proposed for amendment) and Article 6 of the EU Cyber Resilience Act. It does not, however, override third-party rights — researchers remain responsible for their interactions with services not owned by Cuko Ltd.</p>
+  </section>
+
+  <section id="submission">
+    <span class="section-label">→ How to report</span>
+    <h2>Submitting a vulnerability</h2>
+    <p>Send a single email to <a href="mailto:samuel@cuko.uk?subject=Security%20vulnerability%20report">samuel@cuko.uk</a> with the subject line beginning <code class="inline">Security vulnerability report</code>. Include:</p>
+    <dl class="facts">
+      <dt>Asset</dt>
+      <dd>Which in-scope asset is affected (URL, repository name, commit hash where relevant).</dd>
+
+      <dt>Description</dt>
+      <dd>What the vulnerability is, in plain language.</dd>
+
+      <dt>Reproduction</dt>
+      <dd>Step-by-step reproduction with minimal proof-of-concept.</dd>
+
+      <dt>Impact</dt>
+      <dd>What an attacker could achieve in practice. Theoretical impact is fine; demonstrated impact is better.</dd>
+
+      <dt>Mitigation</dt>
+      <dd>Optional — your suggestion for the fix.</dd>
+
+      <dt>Credit</dt>
+      <dd>Whether you want public credit on resolution. Default is no credit unless you opt in.</dd>
+    </dl>
+    <p>Encrypted communication is not currently supported. If you require encrypted submission, contact us first at the address above and we will arrange an alternative channel for that report.</p>
+  </section>
+
+  <section id="response">
+    <span class="section-label">→ What to expect</span>
+    <h2>Service-level commitments</h2>
+    <dl class="facts">
+      <dt>Acknowledgement</dt>
+      <dd>Within two working days of receipt</dd>
+
+      <dt>Initial assessment</dt>
+      <dd>Within five working days, including a preliminary severity rating</dd>
+
+      <dt>Remediation</dt>
+      <dd>Critical and high severity within 30 days; medium within 60 days; low within 90 days, where the underlying asset permits</dd>
+
+      <dt>Update cadence</dt>
+      <dd>Status update every fortnight while the report is open</dd>
+
+      <dt>Disclosure</dt>
+      <dd>Coordinated public disclosure no earlier than 90 days after initial report, or earlier by mutual agreement</dd>
+    </dl>
+  </section>
+
+  <section id="acknowledgements">
+    <span class="section-label">→ Acknowledgements</span>
+    <h2>Researchers credited</h2>
+    <p>None to date. Researchers who give Cuko Ltd a reasonable opportunity to fix and who opt in to public credit will be listed here on resolution.</p>
+  </section>
+
+  <section id="meta">
+    <span class="section-label">→ Meta</span>
+    <h2>About this policy</h2>
+    <dl class="facts">
+      <dt>Last updated</dt>
+      <dd>{lastUpdated}</dd>
+
+      <dt>Review cadence</dt>
+      <dd>Annually and after any material incident</dd>
+
+      <dt>Machine-readable companion</dt>
+      <dd><a href="/.well-known/security.txt"><code class="inline">/.well-known/security.txt</code></a> (RFC 9116)</dd>
+    </dl>
+  </section>
+
+</BaseLayout>

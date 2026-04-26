@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const title = 'Privacy notice — Cuko Ltd';
+const description =
+  'Privacy notice for cuko.uk. What is collected, how it is used, your rights under UK GDPR and EU GDPR, and how to contact us as the data controller.';
+
+const url = `${SITE_URL}/privacy`;
+const lastUpdated = new Date().toISOString().slice(0, 10);
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Privacy', url },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero no-rule">
+    <span class="accent-rule" aria-hidden="true"></span>
+    <h1>Privacy notice</h1>
+    <p>This notice explains how Cuko Ltd handles personal data in connection with cuko.uk and any related correspondence. It applies to visitors to the site and to people who contact Cuko Ltd by email or other channels referenced here.</p>
+  </section>
+
+  <section id="controller">
+    <span class="section-label">→ Data controller</span>
+    <h2>Who is responsible</h2>
+    <dl class="facts">
+      <dt>Controller</dt>
+      <dd>Cuko Ltd</dd>
+
+      <dt>Registered no.</dt>
+      <dd>14989953 — England and Wales</dd>
+
+      <dt>Office</dt>
+      <dd>58 Twyford Avenue, W3 9QB, London, United Kingdom</dd>
+
+      <dt>ICO registration</dt>
+      <dd>C1919036 — <a href="https://ico.org.uk/ESDWebPages/Search">UK Information Commissioner's Office register</a></dd>
+
+      <dt>Contact</dt>
+      <dd><a href="mailto:samuel@cuko.uk?subject=Privacy%20enquiry">samuel@cuko.uk</a></dd>
+    </dl>
+  </section>
+
+  <section id="collected">
+    <span class="section-label">→ What is collected</span>
+    <h2>Data collected through this site</h2>
+    <h3>Directly from the site</h3>
+    <p>cuko.uk is a static site. It does not include analytics, advertising trackers, embedded social widgets, or fingerprinting code. No personal data is collected client-side beyond what is strictly necessary to render the page you have requested.</p>
+
+    <h3>Through hosting</h3>
+    <p>The site is served by GitHub Pages (operated by GitHub, Inc., a subsidiary of Microsoft). GitHub processes connection metadata — including IP addresses, user-agent strings, and request URLs — for security, abuse-prevention, and infrastructure operation purposes. GitHub is the data controller for those server-side logs. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+
+    <h3>Through correspondence</h3>
+    <p>If you email Cuko Ltd at the addresses linked from this site, we receive your email address, the content of your message, any attachments, and standard email-protocol metadata. Email is hosted by an established UK or EU mail provider; routing transits the public internet under TLS where supported.</p>
+
+    <h3>Through local storage</h3>
+    <p>One key is written to your browser's <code class="inline">localStorage</code>: <code class="inline">cuko-theme</code>. It records your preferred theme (<em>auto</em>, <em>light</em>, or <em>dark</em>). The value never leaves your device and contains no personal data. You can clear it at any time via your browser's site-data controls.</p>
+  </section>
+
+  <section id="purpose">
+    <span class="section-label">→ Purpose and lawful basis</span>
+    <h2>Why we hold what we hold</h2>
+    <dl class="facts">
+      <dt>Email correspondence</dt>
+      <dd>To respond to enquiries and operate engagements. Lawful basis: legitimate interests (Article 6(1)(f) UK and EU GDPR) and, for active engagements, performance of a contract (Article 6(1)(b)).</dd>
+
+      <dt>Hosting logs</dt>
+      <dd>Service security and abuse prevention. Lawful basis: legitimate interests (Article 6(1)(f)). Controller: GitHub.</dd>
+
+      <dt>Theme preference</dt>
+      <dd>Strictly necessary to honour your accessibility choice between visits. Stored locally; not personal data; PECR exemption applies.</dd>
+    </dl>
+  </section>
+
+  <section id="retention">
+    <span class="section-label">→ Retention</span>
+    <h2>How long data is kept</h2>
+    <dl class="facts">
+      <dt>Email correspondence</dt>
+      <dd>Active enquiry threads kept for the duration of the conversation plus six years where a contract followed (UK statutory limitation). Cold or unsolicited messages deleted within twelve months.</dd>
+
+      <dt>Hosting logs</dt>
+      <dd>Retained by GitHub per its own retention schedule. Cuko Ltd does not access these logs in the ordinary course.</dd>
+
+      <dt>Theme preference</dt>
+      <dd>Persists on your device until you clear it.</dd>
+    </dl>
+  </section>
+
+  <section id="sharing">
+    <span class="section-label">→ Recipients</span>
+    <h2>Who else sees the data</h2>
+    <p>Personal data is not sold, rented, or otherwise shared for marketing. Limited disclosure may occur in three circumstances:</p>
+    <p><strong class="emphasis">Service providers</strong> acting under contract — currently the email provider, the cloud-hosting provider for the company's working files, and accountants. Each operates as a processor under written terms aligned with Article 28 UK and EU GDPR.</p>
+    <p><strong class="emphasis">Legal obligation</strong> — if disclosure is required by law, court order, or competent regulator (HMRC, ICO, FCA, or equivalent EU authorities under MiCA / DORA where applicable).</p>
+    <p><strong class="emphasis">Corporate transactions</strong> — in the event of a sale, merger, or restructuring of Cuko Ltd, data may transfer to a successor entity subject to equivalent protections.</p>
+  </section>
+
+  <section id="transfers">
+    <span class="section-label">→ International transfers</span>
+    <h2>Data leaving the UK or EEA</h2>
+    <p>Some processors operate from the United States. Transfers rely on the UK International Data Transfer Addendum and EU Standard Contractual Clauses (2021/914), supplemented by the UK Extension and supplementary measures where the processor's home jurisdiction lacks an adequacy decision. The transfer mechanism is reviewed at engagement start.</p>
+  </section>
+
+  <section id="rights">
+    <span class="section-label">→ Your rights</span>
+    <h2>Rights under UK and EU GDPR</h2>
+    <ul class="services">
+      <li><span class="svc-name">Access</span><span class="svc-desc">Confirm whether we hold personal data about you and obtain a copy.</span></li>
+      <li><span class="svc-name">Rectification</span><span class="svc-desc">Correct inaccurate or incomplete personal data.</span></li>
+      <li><span class="svc-name">Erasure</span><span class="svc-desc">Have your personal data deleted where the legal grounds for processing are no longer met.</span></li>
+      <li><span class="svc-name">Restriction</span><span class="svc-desc">Pause processing while a dispute about accuracy or grounds is resolved.</span></li>
+      <li><span class="svc-name">Portability</span><span class="svc-desc">Receive personal data in a structured, commonly used, machine-readable format.</span></li>
+      <li><span class="svc-name">Objection</span><span class="svc-desc">Object to processing based on legitimate interests, including direct marketing (we do none, but the right stands).</span></li>
+      <li><span class="svc-name">Complain</span><span class="svc-desc">Lodge a complaint with the UK Information Commissioner's Office (<a href="https://ico.org.uk">ico.org.uk</a>) or your national supervisory authority in the EU.</span></li>
+    </ul>
+    <p style="margin-top:1.4rem">Requests are answered within thirty days, free of charge, unless manifestly unfounded or excessive.</p>
+  </section>
+
+  <section id="changes">
+    <span class="section-label">→ Changes</span>
+    <h2>Updates to this notice</h2>
+    <dl class="facts">
+      <dt>Last updated</dt>
+      <dd>{lastUpdated}</dd>
+
+      <dt>Cadence</dt>
+      <dd>Reviewed at every release of cuko.uk and at least annually</dd>
+    </dl>
+    <p>Material changes will be flagged at the top of this page for sixty days following the change.</p>
+  </section>
+
+</BaseLayout>

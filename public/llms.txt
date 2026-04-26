@@ -63,9 +63,12 @@
 
 - [Home](https://cuko.uk/): overview, services teaser, FAQ, contact
 - [Services](https://cuko.uk/services): full engagement modes and commercial terms
+- [Compliance](https://cuko.uk/compliance): GDPR, MiCA, DORA, EU AI Act service detail with article-level coverage
 - [Work](https://cuko.uk/work): selected engagements and recurring engagement shapes
 - [About](https://cuko.uk/about): operator background, stack, operating principles
 - [Contact](https://cuko.uk/contact): channels and engaging Cuko Ltd
+- [Accessibility](https://cuko.uk/accessibility): WCAG 2.2 AA conformance statement
+- [Privacy](https://cuko.uk/privacy): UK GDPR and EU GDPR notice for cuko.uk
 
 ## Contact
 
