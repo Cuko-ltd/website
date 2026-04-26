@@ -108,6 +108,14 @@ const buildId = new Date().toISOString().slice(0, 10);
     .hide-on-mobile { display: none; }
   }
 
+  /* On the smallest screens, hide every status-bar cell so the bar collapses
+     to just the theme toggle aligned right. Brand identity is repeated in
+     the larger Cuko_ logo immediately below — no information is lost. */
+  @media (max-width: 420px) {
+    .top-bar .bar-cell { display: none; }
+    .top-bar { justify-content: flex-end; }
+  }
+
   .brand-link {
     text-decoration: none;
     color: inherit;

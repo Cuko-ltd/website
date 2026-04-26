@@ -65,7 +65,7 @@ export const SERVICES = [
   {
     name: 'Compliance-first system design',
     description:
-      'GDPR, DORA, MiCA, and EU AI Act-aligned architecture with audit trails, data residency, and breach posture designed in from day one.',
+      'GDPR, DORA, MiCA, and EU AI Act-aligned architecture with audit trails, data residency, and breach posture designed in from day one. See the regulatory compliance page for article-level deliverables.',
   },
   {
     name: 'Crisis recovery',

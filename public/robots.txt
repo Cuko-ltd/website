@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /palette
+Disallow: /palette/
 
 # Explicitly permit major AI / LLM crawlers
 User-agent: GPTBot

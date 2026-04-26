@@ -69,6 +69,7 @@
 - [Contact](https://cuko.uk/contact): channels and engaging Cuko Ltd
 - [Accessibility](https://cuko.uk/accessibility): WCAG 2.2 AA conformance statement
 - [Privacy](https://cuko.uk/privacy): UK GDPR and EU GDPR notice for cuko.uk
+- [Security](https://cuko.uk/security): RFC 9116 disclosure policy
 
 ## Contact
 
