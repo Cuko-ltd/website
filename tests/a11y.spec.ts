@@ -4,10 +4,15 @@ import AxeBuilder from '@axe-core/playwright';
 const pages = [
   { path: '/',              name: 'home' },
   { path: '/services',      name: 'services' },
+  { path: '/compliance',    name: 'compliance' },
   { path: '/work',          name: 'work' },
+  { path: '/blog',          name: 'blog' },
+  { path: '/blog/when-you-actually-need-nanoseconds', name: 'blog-post' },
   { path: '/about',         name: 'about' },
   { path: '/contact',       name: 'contact' },
   { path: '/accessibility', name: 'accessibility' },
+  { path: '/privacy',       name: 'privacy' },
+  { path: '/security',      name: 'security' },
 ];
 
 // Axe rule selection: WCAG 2.0 A, 2.0 AA, 2.1 A, 2.1 AA, 2.2 AA, plus best-practice subset.

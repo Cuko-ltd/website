@@ -8,7 +8,7 @@ test.skip(
   'Visual regression runs locally; set PW_VISUAL_REGRESSION=1 to enable on CI.',
 );
 
-const paths = ['/', '/services', '/compliance', '/work', '/about', '/contact', '/accessibility', '/privacy'];
+const paths = ['/', '/services', '/compliance', '/work', '/blog', '/about', '/contact', '/accessibility', '/privacy'];
 
 for (const path of paths) {
   test(`visual: ${path}`, async ({ page }, testInfo) => {

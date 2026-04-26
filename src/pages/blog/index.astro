@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, breadcrumbSchema, webPageSchema } from '../../lib/seo';
+
+const title = 'Blog — Cuko Ltd';
+const description =
+  'Essays from Samuel Ventimiglia on engineering for crypto-native finance, healthcare, AI infrastructure, and regulated cloud-native systems. Hands-on, fractional CTO at Cuko Ltd.';
+
+const url = `${SITE_URL}/blog/`;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  url,
+  name: title,
+  description,
+  publisher: {
+    '@type': 'Organization',
+    name: 'Cuko Ltd',
+    url: SITE_URL,
+  },
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    url: `${SITE_URL}/blog/${post.id}/`,
+    author: { '@type': 'Person', name: post.data.author },
+  })),
+};
+
+const pageSchemas = [
+  webPageSchema({ name: title, description, url }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Blog', url },
+  ]),
+  blogSchema,
+];
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={title} description={description} structuredData={pageSchemas}>
+
+  <section class="hero no-rule">
+    <span class="accent-rule" aria-hidden="true"></span>
+    <h1>Writing</h1>
+    <p>Essays on engineering for regulated, real-time, and AI-native systems. Drawn from current and past engagements.</p>
+    <p style="margin-top:0.6rem"><a href="/rss.xml" class="arrow-link">RSS feed →</a></p>
+  </section>
+
+  <section id="posts" class="no-rule">
+    <span class="section-label">→ Posts</span>
+    <h2>Latest</h2>
+
+    {posts.length === 0 && (
+      <p>No posts yet. Subscribe to the RSS feed to be notified when the first one publishes.</p>
+    )}
+
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li class="post-row">
+          <time class="post-date mono" datetime={post.data.pubDate.toISOString()}>
+            {formatDate(post.data.pubDate)}
+          </time>
+          <a class="post-link" href={`/blog/${post.id}`}>
+            <span class="post-title">{post.data.title}</span>
+            <span class="post-desc">{post.data.description}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    border: 2px solid var(--rule);
+  }
+
+  .post-row {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1.2rem;
+    padding: 1.2rem 1.3rem;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+
+  .post-row:last-child { border-bottom: none; }
+
+  .post-date {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+  }
+
+  .post-link:hover .post-title {
+    color: var(--accent);
+  }
+
+  .post-title {
+    display: block;
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+    transition: color 0.18s ease;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+  }
+
+  .post-link:hover .post-title {
+    text-decoration-color: var(--accent);
+  }
+
+  .post-desc {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 600px) {
+    .post-row {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+</style>

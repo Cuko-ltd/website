@@ -5,6 +5,7 @@ const pages = [
   { path: '/services',      title: /Services/,             h1: /Services/,                  inNav: true },
   { path: '/compliance',    title: /compliance/i,          h1: /Regulatory compliance/i,    inNav: true },
   { path: '/work',          title: /Work/,                 h1: /Selected work/,             inNav: true },
+  { path: '/blog',          title: /Blog/,                 h1: /Writing/,                   inNav: true },
   { path: '/about',         title: /About/,                h1: /About/,                     inNav: true },
   { path: '/contact',       title: /Contact/,              h1: /Contact/,                   inNav: true },
   { path: '/accessibility', title: /Accessibility/,        h1: /Accessibility statement/i,  inNav: false },
@@ -36,9 +37,9 @@ for (const page of pages) {
       await expect(p.locator('header.masthead')).toBeVisible();
       // Brand cursor logo present
       await expect(p.locator('.brand-cursor')).toBeVisible();
-      // Nav has 6 primary items
+      // Nav has 7 primary items
       const navLinks = p.locator('header.masthead nav a.nav-link');
-      await expect(navLinks).toHaveCount(6);
+      await expect(navLinks).toHaveCount(7);
       // Footer present
       await expect(p.locator('footer')).toBeVisible();
 
@@ -117,6 +118,15 @@ test.describe('seo', () => {
     expect(body).toMatch(/^Contact:\s*mailto:/m);
     expect(body).toMatch(/^Expires:\s*\d{4}-\d{2}-\d{2}T/m);
     expect(body).toContain('Canonical: https://cuko.uk/.well-known/security.txt');
+  });
+
+  test('rss.xml is reachable and lists at least one post', async ({ request }) => {
+    const resp = await request.get('/rss.xml');
+    expect(resp.status()).toBe(200);
+    const body = await resp.text();
+    expect(body).toContain('<rss');
+    expect(body).toContain('<title>Cuko Ltd — Writing</title>');
+    expect(body).toMatch(/<item>[\s\S]*<\/item>/);
   });
 
   test('sitemap-index.xml is reachable', async ({ request }) => {
