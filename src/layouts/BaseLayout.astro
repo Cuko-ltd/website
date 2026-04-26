@@ -460,6 +460,46 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
     transform: translateX(4px);
   }
 
+  /* ---------- Tag grid (passions, abilities) ---------- */
+
+  .tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0.6rem 0 0;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+    border: 2px solid var(--rule);
+    background: var(--paper);
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .tag::before {
+    content: '·';
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .tag:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-1px);
+  }
+
+  .tag:hover::before {
+    color: var(--accent);
+  }
+
   /* ---------- Cadence note ---------- */
 
   .cadence-note {
