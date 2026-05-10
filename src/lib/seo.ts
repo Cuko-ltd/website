@@ -7,6 +7,7 @@ export const PERSON = {
   jobTitle: 'Fractional Chief Technology Officer',
   url: SITE_URL,
   email: 'samuel@cuko.uk',
+  image: `${SITE_URL}/samuel-ventimiglia.jpg`,
   knowsLanguage: ['en', 'it'],
   address: {
     '@type': 'PostalAddress',
@@ -24,6 +25,12 @@ export const ORGANIZATION = {
   legalName: 'Cuko Ltd',
   url: SITE_URL,
   email: 'samuel@cuko.uk',
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/logo.svg`,
+    width: 200,
+    height: 40,
+  },
   foundingDate: '2026',
   founders: [{ '@type': 'Person', name: 'Samuel Ventimiglia' }],
   address: {
@@ -37,6 +44,13 @@ export const ORGANIZATION = {
     '@type': 'PropertyValue',
     propertyID: 'UK Companies House',
     value: '14989953',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: 'samuel@cuko.uk',
+    availableLanguage: ['en', 'it'],
+    areaServed: 'Worldwide',
   },
   areaServed: 'Worldwide',
 } as const;
@@ -158,6 +172,32 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
       name: item.name,
       item: item.url,
     })),
+  };
+}
+
+export function webSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Cuko Ltd',
+    alternateName: 'Cuko',
+    url: SITE_URL,
+    description:
+      'Fractional Chief Technology Officer services delivered by Samuel Ventimiglia through Cuko Ltd.',
+    inLanguage: 'en-GB',
+    publisher: {
+      '@type': 'Organization',
+      name: ORGANIZATION.name,
+      url: ORGANIZATION.url,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/blog/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 

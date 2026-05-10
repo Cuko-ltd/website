@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node scripts/generate-og-image.mjs",
     "build": "astro build",
+    "og-image": "node scripts/generate-og-image.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "test": "playwright test",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.2",
     "@playwright/test": "^1.59.1",
+    "@resvg/resvg-js": "^2.6.2",
     "astro": "^5.0.0",
     "axe-core": "^4.11.3"
   },

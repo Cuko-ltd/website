@@ -70,6 +70,11 @@
 - [Accessibility](https://cuko.uk/accessibility): WCAG 2.2 AA conformance statement
 - [Privacy](https://cuko.uk/privacy): UK GDPR and EU GDPR notice for cuko.uk
 - [Security](https://cuko.uk/security): RFC 9116 disclosure policy
+- [Blog](https://cuko.uk/blog): engineering essays on architecture, latency, real-time systems, and fractional CTO practice
+
+## Blog posts
+
+- [When you actually need nanoseconds](https://cuko.uk/blog/when-you-actually-need-nanoseconds/): When software genuinely needs sub-millisecond or microsecond latency, how to identify which latency regime you are in, the three signals that justify dropping a regime, and the order-of-magnitude cost of crossing each wall (web, real-time-ish, sub-millisecond, microsecond, hardware-bound, FPGA/ASIC). Published 2026-04-26.
 
 ## Contact
 

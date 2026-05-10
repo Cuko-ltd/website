@@ -14,6 +14,8 @@ tags:
 draft: false
 ---
 
+> **Short answer.** Systems that genuinely require sub-millisecond, microsecond, or nanosecond latency share three signals: the latency budget is contractually specified by a regulator, venue, or counterparty; arrival rates are bursty with hard per-event deadlines; and there is a measurable competitor whose performance is observable. If none of those apply, the answer is almost always: do not chase nanoseconds. Latency lives in distinct regimes separated by order-of-magnitude walls — and crossing each wall roughly multiplies the engineering budget by ten.
+
 A founder I worked with last year ran a single production line at a small industrial manufacturer. The line did one thing well: items came down a conveyor, a fixed barcode scanner read each item's identifier, and a QR-code printer marked the item with a derived traceability code before it left the station window. The pipeline was written in Go. It had been working, quietly and reliably, for three years.
 
 Then procurement bought a new conveyor that moved at twice the speed.
