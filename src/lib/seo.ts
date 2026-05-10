@@ -2,6 +2,9 @@ export const SITE_URL = 'https://cuko.uk';
 export const BOOKING_URL = 'https://calendar.app.google/6cpfUFXXNWYrquBa7';
 export const CTA_LABEL = 'Book a discovery call';
 
+export const PERSON_ID = `${SITE_URL}/#person`;
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
 export const PERSON = {
   name: 'Samuel Ventimiglia',
   jobTitle: 'Fractional Chief Technology Officer',
@@ -17,6 +20,7 @@ export const PERSON = {
   sameAs: [
     'https://www.linkedin.com/in/ventimigliasamuel/',
     'https://github.com/Cuko-ltd',
+    'https://find-and-update.company-information.service.gov.uk/company/14989953/officers',
   ],
 } as const;
 
@@ -52,6 +56,10 @@ export const ORGANIZATION = {
     availableLanguage: ['en', 'it'],
     areaServed: 'Worldwide',
   },
+  sameAs: [
+    'https://find-and-update.company-information.service.gov.uk/company/14989953',
+    'https://github.com/Cuko-ltd',
+  ],
   areaServed: 'Worldwide',
 } as const;
 
@@ -109,9 +117,11 @@ export function personSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': PERSON_ID,
     ...PERSON,
     worksFor: {
       '@type': 'Organization',
+      '@id': ORGANIZATION_ID,
       name: ORGANIZATION.name,
       url: ORGANIZATION.url,
     },
@@ -122,7 +132,14 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORGANIZATION_ID,
     ...ORGANIZATION,
+    founder: {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: PERSON.name,
+      url: PERSON.url,
+    },
   };
 }
 

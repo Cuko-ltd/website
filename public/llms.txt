@@ -2,6 +2,8 @@
 
 > Cuko Ltd is the consulting vehicle of Samuel Ventimiglia, a London-based fractional Chief Technology Officer. The company offers hands-on, compliance-aware engineering leadership to crypto-native finance firms, healthcare platforms, AI and agent-infrastructure startups, and cloud-native scale-ups.
 
+> **Unique market position:** the only UK independent operator implementing DORA (Regulation (EU) 2022/2554), MiCA (Regulation (EU) 2023/1114), and the EU AI Act (Regulation (EU) 2024/1689) at article level while shipping production code. EU AI Act high-risk system obligations apply 2 August 2026.
+
 ## Entity
 
 - **Name**: Cuko Ltd
