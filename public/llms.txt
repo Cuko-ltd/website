@@ -75,6 +75,8 @@
 ## Blog posts
 
 - [When you actually need nanoseconds](https://cuko.uk/blog/when-you-actually-need-nanoseconds/): When software genuinely needs sub-millisecond or microsecond latency, how to identify which latency regime you are in, the three signals that justify dropping a regime, and the order-of-magnitude cost of crossing each wall (web, real-time-ish, sub-millisecond, microsecond, hardware-bound, FPGA/ASIC). Published 2026-04-26.
+- [What DORA actually requires from your ICT risk management framework](https://cuko.uk/blog/what-dora-actually-requires/): Practitioner's guide to the engineering work the Digital Operational Resilience Act (Regulation (EU) 2022/2554) actually forces on financial entities and CASPs — five engineering pillars (ICT risk management Arts 6–16, incident management Arts 17–23, resilience testing Arts 24–26, third-party risk Arts 28–30, exit strategies Art 28(8)), cost tiers, common failure modes, and the fractional CTO playbook for shipping framework as code. Published 2026-05-26.
+- [EU AI Act Article 12 in production: what tamper-evident logging actually means](https://cuko.uk/blog/eu-ai-act-article-12-tamper-evident-logging/): Practitioner's guide to Article 12 of the EU AI Act (Regulation (EU) 2024/1689) for providers of high-risk AI systems under Annex III. What "automatic recording over the lifetime of the system" actually requires, why tamper-evident is not encrypted, four implementation tiers from "we have logs" to externally anchored verifiable ledgers, and the four other articles that depend on Article 12 logs. Deadline 2 August 2026. Published 2026-06-16.
 
 ## Contact
 

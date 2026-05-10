@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { SITE_URL, breadcrumbSchema, PERSON } from '../../lib/seo';
+import { SITE_URL, breadcrumbSchema, PERSON, faqPageSchema } from '../../lib/seo';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -65,6 +65,7 @@ const pageSchemas = [
     { name: 'Blog', url: `${SITE_URL}/blog/` },
     { name: post.data.title, url },
   ]),
+  ...(post.data.faqs && post.data.faqs.length > 0 ? [faqPageSchema(post.data.faqs)] : []),
 ];
 
 const formatDate = (d: Date) =>
