@@ -56,9 +56,9 @@ export const ORGANIZATION = {
 } as const;
 
 export const SECTORS = [
+  'AI and agent infrastructure',
   'Crypto-native finance',
   'Healthcare',
-  'AI and agent infrastructure',
   'Cloud-native strategy and implementation',
 ] as const;
 

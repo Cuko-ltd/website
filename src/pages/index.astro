@@ -1,7 +1,42 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NumberCounter from '../components/NumberCounter.astro';
 import { SITE_URL, SERVICES, breadcrumbSchema, webPageSchema } from '../lib/seo';
+
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const triggers = [
+  {
+    label: 'Regulatory deadline imminent',
+    detail: 'DORA, MiCA, or EU AI Act obligation in flight; legal team has signed the file but the engineering substrate is missing.',
+  },
+  {
+    label: 'Series A or B technical due diligence',
+    detail: 'Investor or DD team has surfaced gaps in architecture, security posture, or hiring; weeks until close.',
+  },
+  {
+    label: 'Stalled or post-incident build',
+    detail: 'A senior engineer left, a production incident landed, or the architecture has outgrown its original assumptions.',
+  },
+  {
+    label: 'Scaling inflection',
+    detail: 'Three to eight engineers hired without architectural direction; first enterprise customer is asking for ISO 27001 evidence.',
+  },
+  {
+    label: 'Founder hits the technical ceiling',
+    detail: 'Estimates start to feel arbitrary; code review goes either too slow or too generous; hiring decisions drift.',
+  },
+  {
+    label: 'Acquisition or exit preparation',
+    detail: 'Board needs an independent technical assessment; acquirer\'s DD team needs a credible counterpart.',
+  },
+];
 
 const title = 'Cuko Ltd — Fractional Hands-On CTO for Crypto, Healthcare, AI & Cloud';
 const description =
@@ -78,6 +113,9 @@ const featuredServices = SERVICES.slice(0, 4);
     <h1 class="reveal delay-1">
       A fractional CTO who <span class="accent" data-typewriter="ships code" aria-label="ships code">ships code</span>, carries compliance, and aligns engineering with the business.
     </h1>
+    <p class="hero-sub mono reveal delay-1-5">
+      <strong>Samuel Ventimiglia, London.</strong> DORA · MiCA · EU AI Act engineering. <span class="hero-sub-deadline">High-risk AI obligations apply 2 August 2026.</span>
+    </p>
 
     <script>
       function runTypewriter() {
@@ -128,13 +166,16 @@ const featuredServices = SERVICES.slice(0, 4);
       document.addEventListener('astro:page-load', runTypewriter);
     </script>
     <p class="reveal delay-2">
-      For crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups. Seventeen years of senior engineering leadership across four industries.
+      For AI infrastructure, crypto-native finance, healthcare, and cloud-native scale-ups. Seventeen years of senior engineering leadership across four industries.
     </p>
     <p class="reveal delay-3">
-      Recent outcomes: an insurance product taken from a monolithic codebase to <strong class="emphasis">430,000 users</strong> in eight months; a crypto hedge fund moved from spreadsheets to <strong class="emphasis">automated delta hedging</strong> within twelve months.
+      Recent outcomes: an insurance product taken from a monolithic codebase to <strong class="emphasis"><a href="/work">430,000 users</a></strong> in eight months; a crypto hedge fund moved from spreadsheets to <strong class="emphasis">automated delta hedging</strong> within twelve months.
     </p>
     <p class="reveal delay-4">
       I work alongside your team, not above it. Code lands, decisions get made, the board gets a straight answer.
+    </p>
+    <p class="hero-cta reveal delay-5">
+      <a href="https://calendar.app.google/6cpfUFXXNWYrquBa7" target="_blank" rel="noopener noreferrer" class="arrow-link">Book a 30-minute discovery call ↗</a>
     </p>
   </section>
 
@@ -150,14 +191,25 @@ const featuredServices = SERVICES.slice(0, 4);
         <span class="stat-label">Production launches</span>
       </div>
       <div class="stat">
-        <span class="stat-value"><NumberCounter value={4} /></span>
-        <span class="stat-label">Industries shipped in</span>
+        <span class="stat-value"><NumberCounter value={3} /></span>
+        <span class="stat-label">Data-breach incidents handled</span>
       </div>
       <div class="stat">
         <span class="stat-value"><NumberCounter value={430000} format="comma" /></span>
         <span class="stat-label">Users on a single platform</span>
       </div>
     </div>
+  </section>
+
+  <section id="compliance-bridge">
+    <span class="section-label">→ Compliance</span>
+    <h2>Compliance engineered, not bolted on</h2>
+    <p>DORA (Reg (EU) 2022/2554), MiCA (Reg (EU) 2023/1114), and the EU AI Act (Reg (EU) 2024/1689) are architecture constraints, not policy documents. The <a href="/compliance">regulatory compliance page</a> sets out the specific articles I implement against — DORA Arts 6–16, 17–23, 24–26, 28–30; MiCA Title V Arts 67–72, 75; EU AI Act Arts 6, 12, 14, 17, 72; GDPR Arts 5, 25, 30, 32, 33, 35 — and the deliverables produced under each.</p>
+    <p class="cadence-note">
+      <a href="/compliance" class="arrow-link">Article-level deliverables →</a>
+      &nbsp;&nbsp;
+      <a href="/blog/what-dora-actually-requires/" class="arrow-link">Read the DORA essay →</a>
+    </p>
   </section>
 
   <section id="services">
@@ -173,6 +225,25 @@ const featuredServices = SERVICES.slice(0, 4);
     </ul>
     <p class="cadence-note">
       <a href="/services" class="arrow-link">See all engagement modes →</a>
+      &nbsp;&nbsp;
+      <a href="/compliance" class="arrow-link">Compliance deliverables →</a>
+    </p>
+  </section>
+
+  <section id="triggers">
+    <span class="section-label">→ When</span>
+    <h2>When companies typically engage</h2>
+    <p>Engagements start at one of six recognisable moments. If any of these resonate, the next step is a thirty-minute discovery call.</p>
+    <dl class="trigger-list">
+      {triggers.map((t) => (
+        <>
+          <dt>{t.label}</dt>
+          <dd>{t.detail}</dd>
+        </>
+      ))}
+    </dl>
+    <p class="cadence-note">
+      <a href="https://calendar.app.google/6cpfUFXXNWYrquBa7" target="_blank" rel="noopener noreferrer" class="arrow-link">Book a discovery call ↗</a>
     </p>
   </section>
 
@@ -180,8 +251,31 @@ const featuredServices = SERVICES.slice(0, 4);
     <span class="section-label">→ Who</span>
     <h2>Who I work with</h2>
     <p>Seed-stage teams without a CTO yet. Series A companies between full-time hires. Later-stage scale-ups bringing in a specialist for a known problem. Enterprises absorbing a new technical capability. The common thread is a technical decision that needs to be right the first time.</p>
-    <p>Sectors I know deeply: <strong class="emphasis">crypto-native finance</strong> (funds, OTC desks, exchanges, DeFi protocols), <strong class="emphasis">healthcare</strong> (clinical platforms, data-sensitive integrations), <strong class="emphasis">AI and agent infrastructure</strong> (LangChain-based systems, agentic architectures, integration layers), and <strong class="emphasis">cloud-native strategy and implementation</strong> (AWS, Google Cloud, Kubernetes, real-time data pipelines). Engagements move fastest where two or more of these overlap.</p>
+    <p>Sectors I know deeply: <strong class="emphasis">AI and agent infrastructure</strong> (LangChain-based systems, agentic architectures, integration layers), <strong class="emphasis">crypto-native finance</strong> (funds, OTC desks, exchanges, DeFi protocols), <strong class="emphasis">healthcare</strong> (clinical platforms, data-sensitive integrations), and <strong class="emphasis">cloud-native strategy and implementation</strong> (AWS, Google Cloud, Kubernetes, real-time data pipelines). Engagements move fastest where two or more of these overlap.</p>
   </section>
+
+  {recentPosts.length > 0 && (
+    <section id="writing">
+      <span class="section-label">→ Writing</span>
+      <h2>Recent essays</h2>
+      <ul class="post-preview">
+        {recentPosts.map((post) => (
+          <li>
+            <time class="post-preview-date mono" datetime={post.data.pubDate.toISOString()}>
+              {formatDate(post.data.pubDate)}
+            </time>
+            <a class="post-preview-link" href={`/blog/${post.id}`}>
+              <span class="post-preview-title" transition:name={`post-title-${post.id}`}>{post.data.title}</span>
+              <span class="post-preview-desc">{post.data.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="cadence-note">
+        <a href="/blog" class="arrow-link">All essays →</a>
+      </p>
+    </section>
+  )}
 
   <section id="faq">
     <span class="section-label">→ Questions</span>

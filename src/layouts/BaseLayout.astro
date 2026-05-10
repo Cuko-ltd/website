@@ -302,6 +302,149 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
     max-width: 56ch;
   }
 
+  .hero-sub {
+    font-size: 0.88rem !important;
+    color: var(--ink-soft) !important;
+    text-transform: none;
+    letter-spacing: -0.005em;
+    margin: -0.6rem 0 1.4rem !important;
+    padding: 0.6rem 0.9rem;
+    border-left: 3px solid var(--accent);
+    background: var(--paper-alt);
+    max-width: 64ch !important;
+    line-height: 1.5;
+  }
+
+  .hero-sub strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .hero-sub-deadline {
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .hero-cta {
+    margin-top: 1.6rem !important;
+  }
+
+  /* ---------- Trigger list (when companies engage) ---------- */
+
+  dl.trigger-list {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border: 2px solid var(--rule);
+    display: grid;
+    grid-template-columns: minmax(14rem, 1fr) 2fr;
+    gap: 0;
+  }
+
+  dl.trigger-list dt {
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--ink);
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--rule-soft);
+    border-right: 2px solid var(--rule);
+    background: var(--paper-alt);
+    letter-spacing: -0.005em;
+  }
+
+  dl.trigger-list dd {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+    padding: 1rem 1.3rem;
+    border-bottom: 1px solid var(--rule-soft);
+    line-height: 1.5;
+  }
+
+  dl.trigger-list dt:nth-last-of-type(1),
+  dl.trigger-list dd:last-of-type {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    dl.trigger-list {
+      grid-template-columns: 1fr;
+    }
+    dl.trigger-list dt {
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+    }
+  }
+
+  /* ---------- Recent essays preview list ---------- */
+
+  ul.post-preview {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    border: 2px solid var(--rule);
+  }
+
+  ul.post-preview li {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 1.2rem;
+    padding: 1rem 1.3rem;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+
+  ul.post-preview li:last-child {
+    border-bottom: none;
+  }
+
+  .post-preview-date {
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .post-preview-link {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+  }
+
+  .post-preview-title {
+    display: block;
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.005em;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: color 0.18s ease, text-decoration-color 0.18s ease;
+  }
+
+  .post-preview-link:hover .post-preview-title {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  .post-preview-desc {
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    max-width: 60ch;
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    ul.post-preview li {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+
   /* ---------- Standard headings ---------- */
 
   h2 {
@@ -659,6 +802,7 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
   }
 
   .reveal.delay-1 { animation-delay: 0.05s; }
+  .reveal.delay-1-5 { animation-delay: 0.12s; }
   .reveal.delay-2 { animation-delay: 0.18s; }
   .reveal.delay-3 { animation-delay: 0.32s; }
   .reveal.delay-4 { animation-delay: 0.46s; }
