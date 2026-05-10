@@ -1,12 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_URL, SERVICES, breadcrumbSchema, webPageSchema } from '../lib/seo';
+import { SITE_URL, SERVICES, breadcrumbSchema, webPageSchema, faqPageSchema } from '../lib/seo';
 
-const title = 'Services — Cuko Ltd Fractional CTO';
+const title = 'Fractional CTO Services — Crypto, Healthcare, AI, Cloud | Cuko Ltd';
 const description =
-  'Eight engagement modes offered through Cuko Ltd: hands-on build lead, 0→1 architecture, AI integration and development, compliance-first system design, crisis recovery, engineering team scaling, technical due diligence, and advisor.';
+  'Eight fractional CTO engagement modes for crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups: hands-on build lead, 0→1 architecture, AI integration, compliance-first design, crisis recovery, team scaling, technical due diligence, and advisor.';
 
 const url = `${SITE_URL}/services`;
+
+const faqs = [
+  {
+    question: 'What is a fractional CTO?',
+    answer:
+      'A fractional CTO is a senior engineering leader who works with a company part-time on a recurring basis — typically one to three days per week — owning architecture, technology selection, and delivery oversight without taking a permanent full-time role. Fractional CTOs are used by companies that need senior technical judgement before they can justify a full-time hire, or by founders who want a senior second voice on critical decisions.',
+  },
+  {
+    question: 'What is the minimum engagement?',
+    answer:
+      'One day per week. Anything less and the work does not compound — context-switching cost outweighs delivered value. Build engagements typically run three to six months at one or two days per week; due-diligence engagements are one to four weeks; advisor retainers are ongoing at one day per month with board attendance.',
+  },
+  {
+    question: 'How is pricing structured?',
+    answer:
+      'Day rate, weekly retainer, or monthly retainer. Pricing depends on engagement mode, sector, and required time zone coverage. Rates and current availability are shared on request after a thirty-minute discovery call.',
+  },
+  {
+    question: 'Which time zones do you cover?',
+    answer:
+      'Engagements across North America, EMEA, and Asia are routine. Working hours are agreed at engagement start. The base of operation is London, United Kingdom.',
+  },
+  {
+    question: 'What does "hands-on" mean in practice?',
+    answer:
+      'Hands-on means writing production code alongside the in-house team, owning the hard parts of the codebase, and taking on-call shifts during critical periods — not only producing strategy documents and attending steering meetings. Most Cuko Ltd engagements blend hands-on build work with architecture, hiring, and board-level technical communication.',
+  },
+];
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -35,6 +63,7 @@ const pageSchemas = [
     { name: 'Services', url },
   ]),
   itemListSchema,
+  faqPageSchema(faqs),
 ];
 ---
 
@@ -42,7 +71,8 @@ const pageSchemas = [
 
   <section class="hero">
     <h1>Services</h1>
-    <p>Eight engagement modes, ordered from highest hands-on intensity to advisor-only. Most engagements blend two or three modes; the structure below makes it easier to pick the entry point.</p>
+    <p>A <strong>fractional CTO</strong> is a senior engineering leader who works with a company part-time on a recurring basis — typically one to three days per week — owning architecture, technology selection, and delivery oversight without taking a permanent full-time role. Cuko Ltd offers eight engagement modes, ordered from highest hands-on intensity to advisor-only, for crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups.</p>
+    <p>Most engagements blend two or three modes; the structure below makes it easier to pick the entry point.</p>
   </section>
 
   <section id="modes">
@@ -82,6 +112,19 @@ const pageSchemas = [
 
       <dt>Languages</dt>
       <dd>English (native equivalent), Italian (native)</dd>
+    </dl>
+  </section>
+
+  <section id="faq">
+    <p class="section-label">FAQ</p>
+    <h2>Frequently asked</h2>
+    <dl class="faq">
+      {faqs.map((item) => (
+        <>
+          <dt>{item.question}</dt>
+          <dd>{item.answer}</dd>
+        </>
+      ))}
     </dl>
   </section>
 

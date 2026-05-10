@@ -201,6 +201,12 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
     font-feature-settings: 'ss01' 1, 'cv11' 1;
   }
 
+  /* iOS and older Android repaint the full viewport on every scroll frame
+     when background-attachment: fixed is set. Disable on small screens. */
+  @media (max-width: 768px) {
+    body { background-attachment: scroll; }
+  }
+
   /* ---------- Page layout ---------- */
 
   .page {

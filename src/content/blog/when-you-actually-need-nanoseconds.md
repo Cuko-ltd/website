@@ -77,7 +77,7 @@ The reason is that each regime locks out the next set of off-the-shelf tools. At
 
 Hardware compounds the same way. A web service runs on commodity instances. A real-time system runs on tuned instances with predictable network performance. A sub-millisecond system needs co-location, dedicated NICs, and the operations team to run them. A microsecond system needs fibre cross-connects, CPU pinning, BIOS-level tuning, and a small infrastructure team that knows what BIOS-level tuning means in practice.
 
-A board considering a regime change is making a *capital allocation* decision, not a sprint-planning decision. The engineering team will tell you what it costs to get one regime down. The next regime down costs roughly ten times that, and the regime after that costs a hundred. There is no smooth curve. Pricing it as if there were is the most expensive mistake I see in this work.
+A board considering a regime change is making a *capital allocation* decision, not a sprint-planning decision. The engineering team will tell you what it costs to get one regime down. The next regime down costs roughly ten times that, and the regime after that costs a hundred. There is no smooth curve. Pricing it as if there were is the most expensive mistake I see in [this kind of fractional CTO work](/work).
 
 ## The pragmatic recipe
 
@@ -89,7 +89,7 @@ If you have read this far and concluded that yes, the system you are building ge
 
 **Rewrite only the binding subsystem.** Not the whole stack. Most production architectures that survived a regime change kept the operational shell — provisioning, orchestration, logging, dashboards — intact, and rewrote the hot path inside it. The rewrite is usually small. The discipline to keep it small is the hard part.
 
-**Run them side by side before swapping.** Shadow the new path with the old, compare outputs for a week, swap when they match. This is non-negotiable in regulated work and a kindness everywhere else.
+**Run them side by side before swapping.** Shadow the new path with the old, compare outputs for a week, swap when they match. This is non-negotiable in [regulated work](/compliance) and a kindness everywhere else.
 
 **Set up regression testing as code, not as a vibe.** Latency regression tests, run on every commit, with thresholds that fail the build. If you do not, the gain you fought for will erode within two quarters as features land on top.
 
@@ -101,7 +101,7 @@ The second most common failure is mid-regime architectures that pretend to be on
 
 The third is treating the regime change as a one-off project. Once you are in a faster regime, *every change you make* either preserves the regime or breaks it. There is no going back to the old velocity. Hires, code review, deployment, monitoring all have to change to match.
 
-If you are weighing this for the first time and the question is which engineer to hire, what to write in C++, whether to take co-location now or later — get help that has done it. The cost of getting it right with experienced advice is small relative to the cost of getting it wrong without.
+If you are weighing this for the first time and the question is which engineer to hire, what to write in C++, whether to take co-location now or later — get help that has done it. The cost of getting it right with experienced advice is small relative to the cost of getting it wrong without. This is the work Cuko Ltd does as a [hands-on build lead and architecture engagement](/services).
 
 ---
 

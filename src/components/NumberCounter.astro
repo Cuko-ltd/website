@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { value, prefix = '', suffix = '', duration = 1400, format = 'plain' } = Astro.props;
+
+// Render the final value in static HTML so non-JS scrapers (LLM crawlers, Common Crawl)
+// see the real number. JS overrides to 0 and animates up on viewport entry.
+const formatted = format === 'comma' ? value.toLocaleString('en-GB') : String(value);
 ---
 
 <span
@@ -18,7 +22,7 @@ const { value, prefix = '', suffix = '', duration = 1400, format = 'plain' } = A
   data-suffix={suffix}
   data-format={format}
   aria-label={`${prefix}${value}${suffix}`}
->{prefix}<span class="num">0</span>{suffix}</span>
+>{prefix}<span class="num">{formatted}</span>{suffix}</span>
 
 <script>
   function format(n: number, mode: string): string {
@@ -41,6 +45,10 @@ const { value, prefix = '', suffix = '', duration = 1400, format = 'plain' } = A
       numEl.textContent = format(target, fmt);
       return;
     }
+
+    // Static HTML already contains the final value; reset to 0 right before animating
+    // so the count-up still plays as a progressive enhancement.
+    numEl.textContent = format(0, fmt);
 
     const start = performance.now();
     const tick = (now: number) => {

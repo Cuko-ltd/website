@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_URL, breadcrumbSchema, webPageSchema } from '../lib/seo';
+import { SITE_URL, breadcrumbSchema, webPageSchema, faqPageSchema } from '../lib/seo';
 
 const title = 'Regulatory compliance — Cuko Ltd';
 const description =
@@ -70,6 +70,34 @@ const regulationServices = [
   },
 ];
 
+const faqs = [
+  {
+    question: 'What is DORA and who must comply?',
+    answer:
+      'The Digital Operational Resilience Act (Regulation (EU) 2022/2554) establishes uniform ICT risk-management, incident-reporting, resilience-testing, and third-party-risk requirements for financial entities operating in the EU. It applied from 17 January 2025 and covers banks, investment firms, payment institutions, e-money institutions, crypto-asset service providers, insurers, and their critical ICT third-party providers. Cuko Ltd delivers DORA-aligned ICT risk frameworks, incident-classification rules wired into observability stacks, and exit-strategy runbooks for critical third-party providers.',
+  },
+  {
+    question: 'What is MiCA and when did it apply?',
+    answer:
+      'The Markets in Crypto-Assets Regulation (Regulation (EU) 2023/1114) is the EU’s harmonised framework for crypto-asset issuers and crypto-asset service providers (CASPs). Stablecoin and asset-referenced-token requirements applied from 30 June 2024; CASP authorisation requirements applied from 30 December 2024. Cuko Ltd produces MiCA licence-readiness assessments, governance and three-lines-of-defence designs, conflict-of-interest registers, and complaints-handling pipelines tied to ticketing.',
+  },
+  {
+    question: 'What does GDPR data-protection-by-design mean in practice?',
+    answer:
+      'Article 25 of UK and EU GDPR requires controllers to implement technical and organisational measures that embed data-protection principles into processing activities by default. In engineering practice this means data inventories tied to source code, lawful-basis maps maintained alongside the schema, sub-processor flow diagrams, DPIA reviews triggered by architecture changes, and breach detection and notification playbooks rehearsed before incidents — not retrofitted policies. Cuko Ltd has been delivering GDPR-by-design systems since 2018 enforcement and has handled three production data-breach incidents to closure.',
+  },
+  {
+    question: 'How does Cuko Ltd work under the EU AI Act?',
+    answer:
+      'The EU AI Act (Regulation (EU) 2024/1689) entered into force in August 2024 with staged application: prohibitions from February 2025, general-purpose AI obligations from August 2025, high-risk system obligations from August 2026, full application from August 2027. Cuko Ltd risk-classifies AI systems against Article 6, designs tamper-evident logging architectures for Article 12, builds human-oversight UX patterns for Article 14, and produces post-market monitoring pipelines and CE-marking documentation packs for high-risk providers.',
+  },
+  {
+    question: 'What does a compliance diagnostic include?',
+    answer:
+      'A one-week diagnostic maps current state against the chosen regulation, produces a gap register prioritised by regulatory severity and engineering effort, and delivers a remediation plan to the board. Diagnostic outputs convert directly into a build engagement if the company chooses to proceed.',
+  },
+];
+
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -98,6 +126,7 @@ const pageSchemas = [
     { name: 'Compliance', url },
   ]),
   itemListSchema,
+  faqPageSchema(faqs),
 ];
 ---
 
@@ -200,6 +229,19 @@ const pageSchemas = [
 
     <h3>What I deliver</h3>
     <p>Risk classifications; tamper-evident logging architectures; human-oversight UX patterns; quality-management frameworks; post-market monitoring pipelines; CE-marking documentation packs.</p>
+  </section>
+
+  <section id="faq">
+    <p class="section-label">FAQ</p>
+    <h2>Frequently asked</h2>
+    <dl class="faq">
+      {faqs.map((item) => (
+        <>
+          <dt>{item.question}</dt>
+          <dd>{item.answer}</dd>
+        </>
+      ))}
+    </dl>
   </section>
 
   <section id="how-to-engage">
