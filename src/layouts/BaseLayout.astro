@@ -585,6 +585,33 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
     color: var(--accent);
   }
 
+  /* ---------- View Transitions polish (Astro ClientRouter) ---------- */
+
+  @keyframes vt-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes vt-fade-out {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-6px); }
+  }
+
+  ::view-transition-old(root) {
+    animation: vt-fade-out 0.22s cubic-bezier(0.4, 0, 0.6, 1) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: vt-fade-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
+  }
+
   /* ---------- Cadence note ---------- */
 
   .cadence-note {

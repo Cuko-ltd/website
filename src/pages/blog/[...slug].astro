@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollProgress from '../../components/ScrollProgress.astro';
 import { SITE_URL, breadcrumbSchema, PERSON, faqPageSchema } from '../../lib/seo';
 
 export async function getStaticPaths() {
@@ -84,6 +85,7 @@ const formatDate = (d: Date) =>
     tags: post.data.tags,
   }}
 >
+  <ScrollProgress />
 
   <article class="post">
     <header class="post-header">

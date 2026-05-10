@@ -76,8 +76,57 @@ const featuredServices = SERVICES.slice(0, 4);
   <section class="hero no-rule">
     <span class="accent-rule" aria-hidden="true"></span>
     <h1 class="reveal delay-1">
-      A fractional CTO who <span class="accent">ships code</span>, carries compliance, and aligns engineering with the business.
+      A fractional CTO who <span class="accent" data-typewriter="ships code" aria-label="ships code">ships code</span>, carries compliance, and aligns engineering with the business.
     </h1>
+
+    <script>
+      function runTypewriter() {
+        const el = document.querySelector<HTMLElement>('[data-typewriter]');
+        if (!el) return;
+
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const alreadyPlayed = sessionStorage.getItem('cuko-typewriter-played') === '1';
+
+        // Reserve final width to prevent layout shift while typing.
+        const final = el.dataset.typewriter ?? el.textContent ?? '';
+        el.style.minWidth = `${final.length}ch`;
+        el.style.display = 'inline-block';
+
+        if (reduced || alreadyPlayed) {
+          el.textContent = final;
+          return;
+        }
+
+        sessionStorage.setItem('cuko-typewriter-played', '1');
+        el.textContent = '';
+
+        let i = 0;
+        const tick = () => {
+          if (i <= final.length) {
+            el.textContent = final.slice(0, i) + (i < final.length ? '█' : '');
+            i++;
+            // Slight per-char jitter: feels human, not mechanical.
+            const delay = 110 + Math.random() * 50;
+            setTimeout(tick, delay);
+          } else {
+            // Cursor blink: 4 cycles, then settle on final text.
+            let blinks = 0;
+            const blinkInterval = setInterval(() => {
+              blinks++;
+              el.textContent = blinks % 2 === 0 ? final + '█' : final;
+              if (blinks >= 8) {
+                clearInterval(blinkInterval);
+                el.textContent = final;
+              }
+            }, 420);
+          }
+        };
+        // Initial delay so the typewriter starts after the hero reveal-up animation lands.
+        setTimeout(tick, 700);
+      }
+
+      document.addEventListener('astro:page-load', runTypewriter);
+    </script>
     <p class="reveal delay-2">
       For crypto-native finance, healthcare, AI infrastructure, and cloud-native scale-ups. Seventeen years of senior engineering leadership across four industries.
     </p>

@@ -1,0 +1,61 @@
+---
+// Reading-progress bar pinned to the top of the viewport.
+// Tracks scroll % through the nearest <article> element when present, or the document.
+// Respects prefers-reduced-motion: bar still functions but has no transition smoothing.
+---
+
+<div class="scroll-progress" role="presentation" aria-hidden="true">
+  <div class="scroll-progress-fill"></div>
+</div>
+
+<script>
+  function init() {
+    const fill = document.querySelector<HTMLElement>('.scroll-progress-fill');
+    if (!fill) return;
+
+    const target = document.querySelector<HTMLElement>('article') ?? document.documentElement;
+
+    function update() {
+      const rect = target.getBoundingClientRect();
+      const total = target.scrollHeight - window.innerHeight;
+      const scrolled = -rect.top;
+      const pct = total > 0 ? Math.max(0, Math.min(1, scrolled / total)) : 0;
+      fill.style.transform = `scaleX(${pct})`;
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+  }
+
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    z-index: 99;
+    pointer-events: none;
+  }
+
+  .scroll-progress-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.08s linear;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-progress-fill {
+      transition: none;
+    }
+  }
+</style>
