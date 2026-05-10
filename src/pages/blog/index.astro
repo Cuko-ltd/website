@@ -71,7 +71,7 @@ const formatDate = (d: Date) =>
             {formatDate(post.data.pubDate)}
           </time>
           <a class="post-link" href={`/blog/${post.id}`}>
-            <span class="post-title">{post.data.title}</span>
+            <span class="post-title" transition:name={`post-title-${post.id}`}>{post.data.title}</span>
             <span class="post-desc">{post.data.description}</span>
           </a>
         </li>

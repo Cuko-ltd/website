@@ -278,6 +278,21 @@ const allSchemas = [...siteWideSchemas, ...structuredData];
 
   .hero h1 .accent {
     color: var(--accent);
+    font-variation-settings: 'wght' 500;
+    transition: font-variation-settings 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                letter-spacing 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: default;
+  }
+
+  .hero h1 .accent:hover {
+    font-variation-settings: 'wght' 750;
+    letter-spacing: -0.025em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .accent {
+      transition: none;
+    }
   }
 
   .hero p {
