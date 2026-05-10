@@ -53,11 +53,11 @@
 
 ## Technology stack
 
-- **Languages**: Go, Python, SQL
-- **Data**: SQL and NoSQL databases, Apache Kafka, NATS JetStream
-- **Infrastructure**: Docker, Kubernetes, Nginx
-- **Cloud**: Amazon Web Services, Google Cloud
-- **AI tooling**: LangChain, TensorFlow
+- **Languages**: Go, Python, C++, Node.js, SQL
+- **Data**: SQL and NoSQL databases, vector databases (pgvector, Pinecone, Weaviate), Apache Kafka
+- **Infrastructure**: Docker, Kubernetes, Nginx, NATS JetStream, Grafana
+- **Cloud**: Amazon Web Services (AWS), Google Cloud Platform (GCP), DigitalOcean
+- **AI tooling**: Claude, LangChain, TensorFlow
 
 ## Pages
 
