@@ -20,6 +20,15 @@ const blog = defineCollection({
         }),
       )
       .optional(),
+    newsArticle: z.boolean().default(false),
+    legislation: z
+      .array(
+        z.object({
+          name: z.string(),
+          identifier: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 

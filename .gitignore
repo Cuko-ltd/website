@@ -22,3 +22,8 @@ tests/visual.spec.ts-snapshots/
 
 # Claude Code — agent runtime memory (regenerates per session, may include raw prompt context)
 .claude/agent-memory/
+
+# Internal — project agents and internal planning docs (private to operator)
+.claude/agents/
+doc/blog-outlines/
+doc/marketing/

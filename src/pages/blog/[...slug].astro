@@ -23,32 +23,39 @@ const readingTime = post.data.readingTime ?? `${computedMinutes} min read`;
 
 const url = `${SITE_URL}/blog/${post.id}/`;
 
+const datePublishedIso = post.data.pubDate.toISOString();
+const dateModifiedIso = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+
+const authorSchema = {
+  '@type': 'Person',
+  name: post.data.author,
+  url: SITE_URL,
+  image: PERSON.image,
+  jobTitle: PERSON.jobTitle,
+  sameAs: PERSON.sameAs,
+};
+
+const publisherSchema = {
+  '@type': 'Organization',
+  name: 'Cuko Ltd',
+  url: SITE_URL,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/logo.svg`,
+  },
+};
+
 const blogPostingSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: post.data.title,
   description: post.data.description,
-  datePublished: post.data.pubDate.toISOString(),
-  ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+  datePublished: datePublishedIso,
+  dateModified: dateModifiedIso,
   url,
   image: `${SITE_URL}/og-image.png`,
-  author: {
-    '@type': 'Person',
-    name: post.data.author,
-    url: SITE_URL,
-    image: PERSON.image,
-    jobTitle: PERSON.jobTitle,
-    sameAs: PERSON.sameAs,
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Cuko Ltd',
-    url: SITE_URL,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${SITE_URL}/logo.svg`,
-    },
-  },
+  author: authorSchema,
+  publisher: publisherSchema,
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': url,
@@ -59,8 +66,37 @@ const blogPostingSchema = {
   timeRequired: `PT${computedMinutes}M`,
 };
 
+const newsArticleSchema = post.data.newsArticle
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: datePublishedIso,
+      dateModified: dateModifiedIso,
+      url,
+      image: `${SITE_URL}/og-image.png`,
+      author: authorSchema,
+      publisher: publisherSchema,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url,
+      },
+      ...(post.data.legislation && post.data.legislation.length > 0
+        ? {
+            about: post.data.legislation.map((l) => ({
+              '@type': 'Legislation',
+              name: l.name,
+              identifier: l.identifier,
+            })),
+          }
+        : {}),
+    }
+  : null;
+
 const pageSchemas = [
   blogPostingSchema,
+  ...(newsArticleSchema ? [newsArticleSchema] : []),
   breadcrumbSchema([
     { name: 'Home', url: SITE_URL },
     { name: 'Blog', url: `${SITE_URL}/blog/` },
