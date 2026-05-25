@@ -1,15 +1,11 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
-import { BOOKING_URL, CTA_LABEL } from '../lib/seo';
 
 const navItems = [
   { href: '/', label: 'Home', code: '00' },
-  { href: '/services', label: 'Services', code: '01' },
-  { href: '/compliance', label: 'Compliance', code: '02' },
-  { href: '/work', label: 'Work', code: '03' },
-  { href: '/blog', label: 'Blog', code: '04' },
-  { href: '/about', label: 'About', code: '05' },
-  { href: '/contact', label: 'Contact', code: '06' },
+  { href: '/blog', label: 'Writing', code: '01' },
+  { href: '/about', label: 'About', code: '02' },
+  { href: '/contact', label: 'Contact', code: '03' },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -18,28 +14,18 @@ const buildId = new Date().toISOString().slice(0, 10);
 
 <header class="masthead" transition:persist="masthead">
   <div class="bar top-bar mono">
-    <span class="bar-cell">CUKO·LTD / FRACTIONAL CTO</span>
+    <span class="bar-cell">SAMUEL VENTIMIGLIA / PERSONAL SITE</span>
     <span class="bar-cell hide-on-mobile">LON · GMT+0</span>
     <span class="bar-cell hide-on-mobile">REV {buildId}</span>
     <ThemeToggle />
   </div>
 
   <div class="brand-row">
-    <a href="/" class="brand-link" aria-label="Cuko Ltd — home">
+    <a href="/" class="brand-link" aria-label="Samuel Ventimiglia — home">
       <div class="brand mono" aria-hidden="true">
-        <span class="brand-name">Cuko</span><span class="brand-cursor">_</span>
+        <span class="brand-name">Samuel</span><span class="brand-cursor">_</span>
       </div>
-      <div class="tagline mono">Cuko Ltd · Fractional Hands-on CTO</div>
-    </a>
-    <a
-      href={BOOKING_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="masthead-cta mono"
-      aria-label={`${CTA_LABEL} — opens Google Calendar in a new tab`}
-    >
-      <span>{CTA_LABEL}</span>
-      <span aria-hidden="true">↗</span>
+      <div class="tagline mono">CTO · Campsor Capital · London</div>
     </a>
   </div>
 
@@ -120,9 +106,6 @@ const buildId = new Date().toISOString().slice(0, 10);
     .hide-on-mobile { display: none; }
   }
 
-  /* On the smallest screens, hide every status-bar cell so the bar collapses
-     to just the theme toggle aligned right. Brand identity is repeated in
-     the larger Cuko_ logo immediately below — no information is lost. */
   @media (max-width: 420px) {
     .top-bar .bar-cell { display: none; }
     .top-bar { justify-content: flex-end; }
@@ -143,57 +126,6 @@ const buildId = new Date().toISOString().slice(0, 10);
   }
 
   .brand-link:hover .brand-name { color: var(--accent); }
-
-  .masthead-cta {
-    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    background: var(--accent);
-    color: var(--accent-ink);
-    border: 2px solid var(--ink);
-    padding: 0.7rem 1rem;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    box-shadow: 3px 3px 0 var(--ink);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    white-space: nowrap;
-  }
-
-  .masthead-cta:hover {
-    color: var(--accent-ink);
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0 var(--ink);
-  }
-
-  .masthead-cta:active {
-    transform: translate(1px, 1px);
-    box-shadow: 1px 1px 0 var(--ink);
-  }
-
-  .masthead-cta:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: 3px;
-  }
-
-  /* Hide masthead CTA on small screens — sticky CTA covers it. */
-  @media (max-width: 720px) {
-    .masthead-cta { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .masthead-cta,
-    .masthead-cta:hover,
-    .masthead-cta:active {
-      transform: none;
-      box-shadow: 3px 3px 0 var(--ink);
-      transition: none;
-    }
-  }
 
   .brand {
     font-weight: 600;

@@ -144,11 +144,7 @@ Document the artefact, not the framework. Regulator asks for evidence of Article
 
 Train the team. Compliance is not a one-off project. Every model change, every threshold change, every pipeline change either preserves the integrity of the chain or breaks it. CI gates that fail on schema drift. Quarterly chain-integrity exercises. The fractional engagement ends when the in-house team can run the loop.
 
-This is exactly the shape of the [AI integration and compliance-first design engagements Cuko Ltd does](/services), and the [/compliance page](/compliance) sets out the article-level deliverables for the EU AI Act alongside DORA, MiCA, and GDPR.
-
----
-
-*If you are a provider of a high-risk AI system and the gap between "we log everything" and Article 12 has just become uncomfortable, that is the engagement Cuko Ltd does. [Book a discovery call](/contact) — thirty minutes, no obligation. The first deliverable is a one-week scoping diagnostic: Annex III mapping, event-taxonomy gap, architecture proposal aligned to tier three. Article 12 obligations apply from 2 August 2026.*
+Article 12 obligations apply from 2 August 2026. The gap between "we log everything" and what the article actually demands is the engineering work worth front-loading now.
 
 ## Sources
 

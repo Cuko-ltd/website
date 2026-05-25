@@ -10,7 +10,7 @@ export async function GET(context: { site?: URL }) {
   const feedUrl = `${site.replace(/\/$/, '')}/rss.xml`;
 
   return rss({
-    title: 'Cuko Ltd — Writing',
+    title: 'Samuel Ventimiglia — Writing',
     description:
       'Essays from Samuel Ventimiglia on engineering for crypto-native finance, healthcare, AI infrastructure, and regulated cloud-native and industrial systems.',
     site,

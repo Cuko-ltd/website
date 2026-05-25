@@ -12,8 +12,7 @@ function policyFor(url) {
   if (path === '/') return { priority: 1.0, changefreq: 'monthly' };
   if (path === '/blog') return { priority: 0.9, changefreq: 'weekly' };
   if (path.startsWith('/blog/')) return { priority: 0.9, changefreq: 'monthly' };
-  if (path === '/services' || path === '/compliance') return { priority: 0.9, changefreq: 'monthly' };
-  if (path === '/work' || path === '/about' || path === '/contact') return { priority: 0.8, changefreq: 'monthly' };
+  if (path === '/about' || path === '/contact') return { priority: 0.8, changefreq: 'monthly' };
   if (path === '/privacy' || path === '/accessibility' || path === '/security') {
     return { priority: 0.3, changefreq: 'yearly' };
   }

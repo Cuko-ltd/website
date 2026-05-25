@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE_URL, breadcrumbSchema, webPageSchema } from '../../lib/seo';
 
-const title = 'Engineering Essays — Fractional CTO | Cuko Ltd';
+const title = 'Writing — Samuel Ventimiglia';
 const description =
-  'Engineering essays from Samuel Ventimiglia on architecture, latency regimes, real-time systems, and fractional CTO practice across crypto-native finance, healthcare, AI infrastructure, and regulated cloud-native systems.';
+  'Essays from Samuel Ventimiglia on architecture, latency regimes, real-time systems, and engineering for regulated and AI-native systems.';
 
 const url = `${SITE_URL}/blog/`;
 
@@ -20,8 +20,8 @@ const blogSchema = {
   name: title,
   description,
   publisher: {
-    '@type': 'Organization',
-    name: 'Cuko Ltd',
+    '@type': 'Person',
+    name: 'Samuel Ventimiglia',
     url: SITE_URL,
   },
   blogPost: posts.map((post) => ({
@@ -52,7 +52,7 @@ const formatDate = (d: Date) =>
   <section class="hero no-rule">
     <span class="accent-rule" aria-hidden="true"></span>
     <h1>Writing</h1>
-    <p>Essays on engineering for regulated, real-time, and AI-native systems. Drawn from current and past engagements.</p>
+    <p>Essays on engineering for regulated, real-time, and AI-native systems. Notes from current work and past projects.</p>
     <p style="margin-top:0.6rem"><a href="/rss.xml" class="arrow-link">RSS feed →</a></p>
   </section>
 

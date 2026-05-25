@@ -1,25 +1,11 @@
-# Cuko Ltd — Fractional Hands-On CTO
+# Samuel Ventimiglia — personal site
 
-> Cuko Ltd is the consulting vehicle of Samuel Ventimiglia, a London-based fractional Chief Technology Officer. The company offers hands-on, compliance-aware engineering leadership to crypto-native finance firms, healthcare platforms, AI and agent-infrastructure startups, and cloud-native scale-ups.
+> cuko.uk is the personal site of Samuel Ventimiglia, Chief Technology Officer at Campsor Capital. London-based. Writing here is personal: engineering, regulation under DORA, MiCA, and the EU AI Act, latency regimes, real-time systems, and AI infrastructure. Opinions are the author's own and do not represent Campsor Capital.
 
-> **Unique market position:** the only UK independent operator implementing DORA (Regulation (EU) 2022/2554), MiCA (Regulation (EU) 2023/1114), and the EU AI Act (Regulation (EU) 2024/1689) at article level while shipping production code. EU AI Act high-risk system obligations apply 2 August 2026.
-
-## Entity
-
-- **Name**: Cuko Ltd
-- **Type**: Private company limited by shares
-- **Jurisdiction**: England and Wales, United Kingdom
-- **Companies House number**: 14989953
-- **Registered office**: 58 Twyford Avenue, W3 9QB, London, United Kingdom
-- **Founder and operator**: Samuel Ventimiglia
-- **Founded**: 2026
-- **Website**: https://cuko.uk
-- **Primary email**: samuel@cuko.uk
-
-## Operator
+## Person
 
 - **Name**: Samuel Ventimiglia
-- **Title**: Fractional Chief Technology Officer
+- **Title**: Chief Technology Officer, Campsor Capital
 - **Location**: London, United Kingdom
 - **Languages**: English, Italian
 - **Experience**: 17+ years in senior engineering leadership
@@ -27,31 +13,21 @@
 - **Scale work**: 4 products carried from constrained beta to worldwide scale
 - **Incident experience**: 3 production data-breach engagements handled end-to-end including regulator and board communication
 - **Certifications**: AWS, LangChain
+- **Email**: samuel@cuko.uk
+- **LinkedIn**: https://www.linkedin.com/in/ventimigliasamuel/
+- **GitHub**: https://github.com/Cuko-ltd
 
-## Sectors served
+## Domain notice
+
+The cuko.uk domain is registered to Cuko Ltd, a UK company (Companies House 14989953) owned by Samuel Ventimiglia. The site is not currently used for client work; it functions as a personal site for writing and contact.
+
+## Technical interests
 
 - Crypto-native finance — funds, OTC desks, exchanges, DeFi protocols
 - Healthcare — clinical platforms, data-sensitive integrations
 - AI and agent infrastructure — LangChain-based systems, agentic architectures, integration layers
-- Cloud-native strategy and implementation — AWS, Google Cloud, Kubernetes, real-time data pipelines
-
-## Engagement modes
-
-- **Hands-on build lead**: senior capacity that ships code alongside the in-house team
-- **0→1 architecture and stack selection**: greenfield system design, build-versus-buy, technology selection
-- **AI integration and development**: LangChain-based agents, retrieval pipelines, inference layers, greenfield agentic systems
-- **Compliance-first system design**: GDPR, DORA, MiCA, EU AI Act-aligned architecture
-- **Crisis recovery**: rescue of stalled projects, post-incident rebuilds, infrastructure remediation
-- **Engineering team scaling and hiring**: team structure, hiring loops, senior network access
-- **Technical due diligence**: pre-investment review for VCs, family offices, and acquirers
-- **Advisor**: monthly retainer with board attendance and technical input
-
-## Commercial terms
-
-- **Minimum engagement**: 1 day per week
-- **Pricing**: day rate, weekly retainer, or monthly retainer (rates on request)
-- **Typical length**: 3–6 months for build engagements; 1–4 weeks for due diligence; ongoing for advisor retainers
-- **Time zones**: engagements across North America, EMEA, and Asia are routine
+- Cloud-native architecture — AWS, Google Cloud, Kubernetes, real-time data pipelines
+- Regulatory engineering — DORA (Regulation (EU) 2022/2554), MiCA (Regulation (EU) 2023/1114), EU AI Act (Regulation (EU) 2024/1689), GDPR
 
 ## Technology stack
 
@@ -63,24 +39,21 @@
 
 ## Pages
 
-- [Home](https://cuko.uk/): overview, services teaser, FAQ, contact
-- [Services](https://cuko.uk/services): full engagement modes and commercial terms
-- [Compliance](https://cuko.uk/compliance): GDPR, MiCA, DORA, EU AI Act service detail with article-level coverage
-- [Work](https://cuko.uk/work): selected engagements and recurring engagement shapes
-- [About](https://cuko.uk/about): operator background, stack, operating principles
-- [Contact](https://cuko.uk/contact): channels and engaging Cuko Ltd
+- [Home](https://cuko.uk/): personal landing — who I am, recent writing, contact
+- [About](https://cuko.uk/about): background, stack, operating principles
+- [Contact](https://cuko.uk/contact): email, LinkedIn, GitHub
+- [Blog](https://cuko.uk/blog): essays on engineering, regulation, latency, AI infrastructure
 - [Accessibility](https://cuko.uk/accessibility): WCAG 2.2 AA conformance statement
 - [Privacy](https://cuko.uk/privacy): UK GDPR and EU GDPR notice for cuko.uk
 - [Security](https://cuko.uk/security): RFC 9116 disclosure policy
-- [Blog](https://cuko.uk/blog): engineering essays on architecture, latency, real-time systems, and fractional CTO practice
 
 ## Blog posts
 
 - [When you actually need nanoseconds](https://cuko.uk/blog/when-you-actually-need-nanoseconds/): When software genuinely needs sub-millisecond or microsecond latency, how to identify which latency regime you are in, the three signals that justify dropping a regime, and the order-of-magnitude cost of crossing each wall (web, real-time-ish, sub-millisecond, microsecond, hardware-bound, FPGA/ASIC). Published 2026-04-26.
-- [What DORA actually requires from your ICT risk management framework](https://cuko.uk/blog/what-dora-actually-requires/): Practitioner's guide to the engineering work the Digital Operational Resilience Act (Regulation (EU) 2022/2554) actually forces on financial entities and CASPs — five engineering pillars (ICT risk management Arts 6–16, incident management Arts 17–23, resilience testing Arts 24–26, third-party risk Arts 28–30, exit strategies Art 28(8)), cost tiers, common failure modes, and the fractional CTO playbook for shipping framework as code. Published 2026-05-26.
+- [What DORA actually requires from your ICT risk management framework](https://cuko.uk/blog/what-dora-actually-requires/): Practitioner's guide to the engineering work the Digital Operational Resilience Act (Regulation (EU) 2022/2554) actually forces on financial entities and CASPs — five engineering pillars (ICT risk management Arts 6–16, incident management Arts 17–23, resilience testing Arts 24–26, third-party risk Arts 28–30, exit strategies Art 28(8)), cost tiers, common failure modes. Published 2026-05-26.
 - [EU AI Act Article 12 in production: what tamper-evident logging actually means](https://cuko.uk/blog/eu-ai-act-article-12-tamper-evident-logging/): Practitioner's guide to Article 12 of the EU AI Act (Regulation (EU) 2024/1689) for providers of high-risk AI systems under Annex III. What "automatic recording over the lifetime of the system" actually requires, why tamper-evident is not encrypted, four implementation tiers from "we have logs" to externally anchored verifiable ledgers, and the four other articles that depend on Article 12 logs. Deadline 2 August 2026. Published 2026-06-16.
-- [CLARITY Act vs MiCA: what CTOs do now](https://cuko.uk/blog/clarity-act-vs-mica-what-ctos-do-now/): Senate Banking Committee marks up H.R. 3633 (Digital Asset Market Clarity Act of 2025) on 14 May 2026. The bill splits SEC and CFTC jurisdiction over digital assets using a four-part "mature blockchain system" test (open source, transparent rules, no single controller, no 20%+ holder). MiCA (Regulation (EU) 2023/1114) already regulates both ends functionally with CASP authorisation since 30 December 2024. Four engineering moves for crypto CTOs with US and EU exposure: dual classification map, audit MiCA custody substrate for CLARITY-readiness, dual-output market-abuse surveillance, single canonical event log. Approximately 80% of MiCA engineering work transfers. Published 2026-05-13.
-- [MiCA CASP technical compliance: what a project actually looks like](https://cuko.uk/blog/mica-casp-technical-compliance/): Practitioner's guide to the engineering substrate underneath a MiCA CASP authorisation file. MiCA Title V (Regulation (EU) 2023/1114) applied 30 December 2024; the EU-wide transitional period ends 1 July 2026 (Article 143(3)). Penalties under Article 111: €5m or 5% of turnover for CASP infringements, €15m or 15% for market abuse. Four engineering pillars CASPs get wrong — safekeeping (Articles 70, 75), conflicts policy and register (Article 72, RTS 2025/1142), complaints pipeline (Article 71, RTS 2025/294), canonical event log (Article 68(9), RTS 2025/1140). Cost tiers, common failure modes from engagement, MiCA + DORA cross-stack, and what the ESMA Malta peer review (10 July 2025) means for substrate inspection. Published 2026-05-13.
+- [CLARITY Act vs MiCA: what CTOs do now](https://cuko.uk/blog/clarity-act-vs-mica-what-ctos-do-now/): Senate Banking Committee marks up H.R. 3633 (Digital Asset Market Clarity Act of 2025) on 14 May 2026. The bill splits SEC and CFTC jurisdiction over digital assets using a four-part "mature blockchain system" test. MiCA (Regulation (EU) 2023/1114) already regulates both ends functionally with CASP authorisation since 30 December 2024. Four engineering moves for crypto CTOs with US and EU exposure. Approximately 80% of MiCA engineering work transfers. Published 2026-05-13.
+- [MiCA CASP technical compliance: what a project actually looks like](https://cuko.uk/blog/mica-casp-technical-compliance/): Practitioner's guide to the engineering substrate underneath a MiCA CASP authorisation file. MiCA Title V (Regulation (EU) 2023/1114) applied 30 December 2024; the EU-wide transitional period ends 1 July 2026 (Article 143(3)). Four engineering pillars CASPs get wrong — safekeeping (Articles 70, 75), conflicts policy and register (Article 72, RTS 2025/1142), complaints pipeline (Article 71, RTS 2025/294), canonical event log (Article 68(9), RTS 2025/1140). Published 2026-05-13.
 
 ## Contact
 

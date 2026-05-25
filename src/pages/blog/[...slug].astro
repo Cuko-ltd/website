@@ -36,13 +36,9 @@ const authorSchema = {
 };
 
 const publisherSchema = {
-  '@type': 'Organization',
-  name: 'Cuko Ltd',
+  '@type': 'Person',
+  name: PERSON.name,
   url: SITE_URL,
-  logo: {
-    '@type': 'ImageObject',
-    url: `${SITE_URL}/logo.svg`,
-  },
 };
 
 const blogPostingSchema = {
@@ -110,7 +106,7 @@ const formatDate = (d: Date) =>
 ---
 
 <BaseLayout
-  title={`${post.data.title} — Cuko Ltd`}
+  title={`${post.data.title} — Samuel Ventimiglia`}
   description={post.data.description}
   structuredData={pageSchemas}
   ogType="article"
@@ -146,9 +142,8 @@ const formatDate = (d: Date) =>
     </div>
 
     <footer class="post-footer">
-      <p class="post-byline mono">— {post.data.author}, Cuko Ltd</p>
+      <p class="post-byline mono">— {post.data.author}</p>
       <div class="contact-card">
-        <p><span class="label">Book</span> <a href="https://calendar.app.google/6cpfUFXXNWYrquBa7" target="_blank" rel="noopener noreferrer" class="arrow-link">Book a discovery call ↗</a></p>
         <p><span class="label">Email</span> <a href="mailto:samuel@cuko.uk">samuel@cuko.uk</a></p>
         <p><span class="label">More</span> <a href="/blog" class="arrow-link">All posts →</a></p>
       </div>

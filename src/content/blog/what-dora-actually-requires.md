@@ -147,11 +147,7 @@ Train the team to maintain it. Compliance is now part of the deployment loop. CI
 
 Document the artefacts, not the framework. Regulator submissions are evidence — incident reports filed, register exports, test results, exit-strategy test logs — not policy documents.
 
-This is exactly the shape of the [compliance-first system design engagement Cuko Ltd does](/services), and it is the substantive heart of the [/compliance page](/compliance) where the article-level deliverables are listed in detail.
-
----
-
-*If you are a financial entity, a CASP, or a critical ICT provider and the gap between your DORA framework and the engineering substrate has just become uncomfortable, that is the engagement Cuko Ltd does. [Book a discovery call](/contact) — thirty minutes, no obligation. The first deliverable is a one-week gap diagnostic against the five pillars.*
+That is the substantive heart of the work. Framework as code. Audit trails as a product of the deployment loop, not a separate exercise.
 
 ## Sources
 

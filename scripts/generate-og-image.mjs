@@ -39,11 +39,11 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   <rect width="1200" height="630" fill="${PAPER}"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
   <rect x="80" y="80" width="64" height="6" fill="${ACCENT}"/>
-  <text x="80" y="150" font-family="JetBrains Mono" font-size="22" font-weight="500" fill="${INK_SOFT}" letter-spacing="2">CUKO LTD</text>
-  <text x="80" y="290" font-family="JetBrains Mono" font-size="84" font-weight="500" fill="${INK}" letter-spacing="-2">Fractional</text>
-  <text x="80" y="380" font-family="JetBrains Mono" font-size="84" font-weight="500" fill="${INK}" letter-spacing="-2">Hands-On <tspan fill="${ACCENT}">CTO</tspan></text>
-  <text x="80" y="500" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="${INK_SOFT}" letter-spacing="0">Crypto-native finance · Healthcare · AI · Cloud</text>
-  <text x="80" y="540" font-family="JetBrains Mono" font-size="20" font-weight="400" fill="${INK_SOFT}" letter-spacing="0">Samuel Ventimiglia · London</text>
+  <text x="80" y="150" font-family="JetBrains Mono" font-size="22" font-weight="500" fill="${INK_SOFT}" letter-spacing="2">PERSONAL SITE</text>
+  <text x="80" y="290" font-family="JetBrains Mono" font-size="84" font-weight="500" fill="${INK}" letter-spacing="-2">Samuel</text>
+  <text x="80" y="380" font-family="JetBrains Mono" font-size="84" font-weight="500" fill="${INK}" letter-spacing="-2">Ventimi<tspan fill="${ACCENT}">glia</tspan></text>
+  <text x="80" y="500" font-family="JetBrains Mono" font-size="24" font-weight="400" fill="${INK_SOFT}" letter-spacing="0">CTO at Campsor Capital · London</text>
+  <text x="80" y="540" font-family="JetBrains Mono" font-size="20" font-weight="400" fill="${INK_SOFT}" letter-spacing="0">Engineering · regulation · real-time systems</text>
   <text x="80" y="600" font-family="JetBrains Mono" font-size="18" font-weight="500" fill="${INK}" letter-spacing="2">CUKO.UK</text>
 </svg>`;
 
